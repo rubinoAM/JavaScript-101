@@ -1,3 +1,4 @@
+//JAVASCRIPT EXERCISES
 //Exercise 1
 var week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var curDate = new Date();
