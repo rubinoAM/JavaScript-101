@@ -70,6 +70,9 @@ document.getElementById("fight-btn").onclick = function(){
     console.log(rollOne + " " + rollTwo);
     totalRoll = rollOne + rollTwo;
 
+    dieOne.src = "./dragon-assets/d" + rollOne + ".gif";
+    dieTwo.src = "./dragon-assets/d" + rollTwo + ".gif";
+
     if(totalRoll >= 9){
         dragonImg.src = "http://discofreestyleplatinumseries.com/wp-content/uploads/2018/02/Disco-Freestyle-Platnium-Series-Preformance-Picture.jpg";
         promptText.innerHTML = "Somehow you managed to beat the dragon. Good job, bumblechump!";
