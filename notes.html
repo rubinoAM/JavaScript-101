@@ -46,5 +46,108 @@
             </ul>
         </li>
     </ul>
+
+    <h1>Arrays</h1>
+    <ul>
+        <li>Automatically create keys in numerical order</li>
+        <li>Elements are accessible by their index with [index]</li>
+        <li>E.g: var array = ["YG","Vince Staples","Kendrick Lamar","SOB X RBE"]</li>
+        <li>array[0] == "YG" // True</li>
+    </ul>
+
+    <h1>Number Operators</h1>
+    <ul>
+        <li>Same ones as Python: +, -, *, /. and %</li>
+        <li>You can combine operators with assignment like in Python too (e.g. +=, -=, *=, /=, %=)</li>
+        <li>E.g. var add = 6 + 9; // equals 15</li>
+    </ul>
+
+    <h1>String Operators</h1>
+    <ul>
+        <li>+ will concatenate two strings (or a string and a non-string)</li>
+        <li>.length will return the number of characters in a string</li>
+        <li>.indexOf(sub) will return the index of the substring</li>
+        <li>
+            <ul>Examples:
+                <li>var concat = "hello" + "world"; // helloworld</li>
+                <li>var length = concat.length // 10</li>
+                <li>var indexWorld = concat.indexOf('world'); // 5</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1>Boolean Operators</h1>
+    <ul>
+        <li>! will return the opposite of the boolean</li>
+        <li>&& will apply "and" to two boolean values</li>
+        <li>|| will apply "or" to two boolean values</li>
+        <li>== will check for equality between two values</li>
+        <li>E.g. var dog != false; // True</li>
+    </ul>
+
+    <h1>Array Functions</h1>
+    <ul>
+        <li>.push(element) appends a value to the end of an array</li>
+        <li>.pop() removes the last element in an array</li>
+        <li>.length tells you the number of items in an array</li>
+        <li>
+            <ul>Examples:
+                <li>var array = [4,2,"dog"];</li>
+                <li>array.push('&lAarr;'); // [4,2,"dog","&lAarr;"]</li>
+                <li>array.pop(); // [4,2,"dog"]</li>
+                <li>array.length; // 3</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1>Conditionals</h1>
+    <ul>
+        <li>They work the same way as in Python</li>
+        <li>Instead of "elif", though, you use "else if"</li>
+        <li>
+            <ul>Example:
+                <li>if(answer == "Yes"){</li>
+                <li>// Code</li>
+                <li>} else if(answer == "Maybe"){</li>
+                <li>// Code</li>
+                <li>} else{</li>
+                <li>// Code</li>
+                <li>}</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1>For Loops</h1>
+    <ul>
+        <li>Requires 3 statements: for (s1, s2, s3)</li>
+        <li>The first statement is run before the loop starts</li>
+        <li>The second statement is checked to decide whether the code should loop again</li>
+        <li>The third statement is run after each loop</li>
+        <li>
+            <ul>Example:
+                <li>for (var i = 0; i < 10; i++){</li>
+                <li>console.log("HORSE!");</li>
+                <li>//this for loop will log "HORSE!" to the console 10 times</li>
+                <li>}</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1>While Loops</h1>
+    <ul>
+        <li>Needs one statement: while(s1)</li>
+        <li>That statement is run before every loop to see if the code should be run</li>
+        <li>E.g.: while(some_var = true){console.log("Mxyzptlk!")}</li>
+    </ul>
+
+    <h1>Functions</h1>
+    <ul>
+        <li>Almost exactly like Python functions</li>
+        <li>Function names are optional in JavaScript</li>
+        <li>Functions can be saved to a variable</li>
+        <li>Functions take many inputs and can return <i>one</i> output</li>
+        <li>E.g. function myFunc(){return 4;} // Returns 4</li>
+        <li>E.g. var andy = function(arg1, arg2){return arg1 + arg2;}</li>
+    </ul>
 </body>
 </html>
