@@ -49,8 +49,7 @@ for (var m in daysInMonths){
 var good = 0.2; var fair = 0.15; var bad = 0.1;
 
 function tipCalc(total,rating,patrons){
-    tip = (total * rating)/patrons;
-    tip = tip.toFixed(2);
+    tip = ((total * rating)/patrons).toFixed(2);
     return tip;
 }
 
