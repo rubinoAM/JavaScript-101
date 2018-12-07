@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Madlibs</title>
+    <style>.input-container ul{list-style: none;}</style>
+</head>
+<body onload="hideMadlibs()">
+    <div class="input-container" id="input-container">
+        <h3>Please input the following required words below:</h3>
+        <ul>
+            <li><input type="text" id="answer-1" placeholder="VERB PARTICIPLE"></li>
+            <li><input type="text" id="answer-2" placeholder="LIQUID"></li>
+            <li><input type="text" id="answer-3" placeholder="APPLIANCE"></li>
+            <li><input type="text" id="answer-4" placeholder="FOOD"></li>
+            <li><input type="text" id="answer-5" placeholder="ADJECTIVE"></li>
+            <li><input type="text" id="answer-6" placeholder="BODY PART"></li>
+            <li><input type="text" id="answer-7" placeholder="ADVERB"></li>
+            <li><input type="text" id="answer-8" placeholder="ADJECTIVE"></li>
+            <li><input type="text" id="answer-9" placeholder="NOUN"></li>
+            <li><input type="text" id="answer-10" placeholder="ANIMAL"></li>
+            <li><input type="text" id="answer-11" placeholder="ADVERB"></li>
+            <li><input type="text" id="answer-12" placeholder="PLURAL NOUN"></li>
+            <li><input type="text" id="answer-13" placeholder="TYPE OF PEOPLE"></li>
+            <li><input type="text" id="answer-14" placeholder="BODY PART"></li>
+            <li><input type="text" id="answer-15" placeholder="ANIMAL"></li>
+            <li><input type="text" id="answer-16" placeholder="BODY PART"></li>
+            <li><input type="text" id="answer-17" placeholder="LIQUID"></li>
+            <li><input type="text" id="answer-18" placeholder="ANIMAL"></li>
+            <button onclick="revealMadlibs()">Submit</button>
+        </ul>
+    </div>
+    <div class="madlib-container" id="madlib-container">
+        <h3>Here are your Madlibs:</h3>
+        <p>After <span id="blank-1"></span> canteloupes at the park, drinking <span id="blank-2"></span> out of my cousin's <span id="blank-3"></span> by the pool,
+        and a big <span id="blank-4"></span> dinner, this is turning out to be one <span id="blank-5"></span> night. I'm
+        at some bar called the Spotted <span id="blank-6"></span>, and I am <span id="blank-7"></span> <span id="blank-8"></span> right
+        now. We have <span id="blank-9"></span> service in the red room, but half the people here reek of
+        <span id="blank-10"></span> guts and cigarette smoke. I can't <span id="blank-11"></span> see much with the constant
+        flashing <span id="blank-12"></span> everywhere, but I think there's a group of <span id="blank-13"></span>
+        in the corner over there. I can't see their face, but boy do they have a bodacious
+        <span id="blank-14"></span>. "Excuse me," I say, "but would you all like to join us for a round of
+        <span id="blank-15"></span> <span id="blank-16"></span>  <span id="blank-17"></span>?" It turns out that the person I'm speaking with is
+        actually a killer <span id="blank-18"></span>. Now I am dead. R.I.P. Me.</p>
+    </div>
+    <script src="madlib.js"></script>
+</body>
+</html>
+
+<!--
+                 &%       *.                     
+               *,%@,     #(%@                    
+               ,,,*,@%@%@%,,,                    
+               .,,,,,,,,,,,,,@                   
+               @,,,,,,,,,,,,,,/                  
+              @,,,,,,,,,,,,,,&,%                 
+             *,,,,,,,,,,%@,,,,,,,&               
+             #,,,,,,,,,,,,,,,,,,,,,,,@@/*.       
+              #,,*,,,,,,,,,,,,,,,,,,,,,@/,       
+               %,,,,,,,,,,,,,,,,,,,,,,,,%@       
+                @,,,,@@,,,,,,(        @%         
+                #,,,, @,,,,,,*                   
+               @*,,,@,,,,,,,,,,,                 
+             /,*,,,,,,,,,,,,,,,,,,               
+           @,,,,,,,,,,,,,,,,,,,*,,,#             
+          */,,,,,,,,,,,,,,,,,,,,,,,,             
+          ,,,,,,,,,,,,,,,,,,,,,,,@,,,            
+         %,,,,,*,,,,,,,,,,,,,,,,,/,,,@           
+         ,,,,,,,/,,,,,,,,,,,,,,,,,,#,%           
+         %,,,,,,#,,#,,,,,,,,,,,,,,%@,&           
+         @,,,&,,,,,,,,,,,,,,,,,,,,,,,,           
+          ,,,,,,,,@,,,,,,,,,,,,,,,,#%,%          
+          @,,,,,,,,#,,,,,,,,,,,,,,,,,,@          
+       @##@,,,,,,,,@,,,,,,,,,,,,,/@,,          
+       %##,,/,,,,,,,/%%,,,,,,,,,,,,,/,&          
+       ###,,,,,,,,,######,,,,,,,,,,,&            
+      @###%,,,,,,,,@#@##&%#,,,,,,,,,@            
+       @####@,,,,,,%##%###%,,,,,,,,,&            
+           @#########@###@,,,,,,,,,,*            
+             *%@#########,,,,@,,,,,,,            
+             ,,*,,,,&,,,,,,,@,,,,,,,,,           
+             @%,,,,,,,,,,,,,,,**,,,,,            
+             @,,,,,,,,,,,,,,@,,,,,,,,@           
+             @,,,,,,,,,,,,,,/,,,,,,,,(           
+             @,,,(,,,,,,,,,,(,,,,,,,,,           
+             @,,/,,,,,,,,,,,@,,,,,,,,,@          
+             ,,,,&,,,,,,,,,,,@,,,,,,,,,,@        
+            ,,,,,,,,,,,,,,,,,@,,,,,,,,,,@        
+           /,,,,,,,,,,,,,,,,,,,@((%%/@#          
+          %,,,,,,,,,,%,,,,,,,,,,,(               
+             ,,,,,,,,#,,,,,,,,,,,&               
+                @,,,,,,,,,,,,,@      
+-->
