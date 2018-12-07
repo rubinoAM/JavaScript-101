@@ -83,4 +83,8 @@ document.getElementById("fight-btn").onclick = function(){
 
     document.getElementById("flee-btn").style.display = "none";
     document.getElementById("fight-btn").style.display = "none";
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 68ebe63a69fcbb99e2f2f4867e3c14d49426bad0
