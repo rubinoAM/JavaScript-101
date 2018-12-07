@@ -201,3 +201,79 @@ moreTenPt = moreThanTenPointsPerGame();
 moreFiveRbd = moreThanFiveReboundsPerGame();
 mostPtPerMin = mostPointsPerMinute();
 avgTeamScore = avgTeamScore();
+
+// Render to DOM
+
+// Create variable for main container
+var mainContainer = document.getElementById("m-c");
+
+// Create time container and contents
+var timeContainer = document.getElementById('ti-c');
+timeContainer.innerHTML = `
+    <div class="question">
+        <h1>Question 1: What is the average play time of all of the players?</h1>
+        <h3>Answer: ` + avgTimPlay + ` Minutes</h3>
+    </div>
+    <div class="question">
+        <h1>Question 2: What is the average play time of all of the starters?</h1>
+        <h3>Answer: ` + avgTimStrt + ` Minutes</h3>
+    </div>
+    <div class="question">
+        <h1>Question 3: What is the average play time of all of the bench players?</h1>
+        <h3>Answer: ` + avgTimBnch + ` Minutes</h3>
+    </div>
+`;
+
+// Create player container and contents
+var playerContainer = document.getElementById("p-c");
+playerContainer.innerHTML = `
+    <div class="question" id="q-4">
+        <h1>Question 4: Create an array listing out every player</h1>`;
+
+var questionFour = document.getElementById("q-4");
+for(i=0; i<arrPlaName.length; i++){
+    counter = i + 1;
+    questionFour.innerHTML += `<h4>` + counter + ". " + arrPlaName[i];}
+
+playerContainer.innerHTML +=`
+    </div>
+    <div class="question" id="q-5">
+        <h1>Question 5: Which players average more than 10 points per game?</h1>
+        <h3>Answer:</h3>`;
+
+var questionFive = document.getElementById('q-5');
+for(i=0; i<moreTenPt.length; i++){
+    counter = i + 1;
+    questionFive.innerHTML += `<h4>` + counter + '. ' + moreTenPt[i] + `</h4>`;}
+
+playerContainer.innerHTML +=`    
+    </div>
+    <div class="question" id="q-6">
+        <h1>Question 6: Which players average more than 5 rebounds per game?
+        <h3>Answer:</h3>`;
+
+var questionSix = document.getElementById('q-6');
+for(i=0; i<moreFiveRbd.length; i++){
+    counter = i + 1;
+    questionSix.innerHTML += `<h4>` + counter + '. ' + moreFiveRbd[i] + `</h4>`;}
+
+playerContainer.innerHTML +=`
+    </div>
+    <div class="question" id="q-7">
+        <h1>Question 7: Which player scores the most points per minute?
+        <h3>Answer: ` + mostPtPerMin + `</h3>
+    </div>`;
+
+// Create team container and contents
+var teamContainer = document.getElementById("te-c");
+teamContainer.innerHTML = `
+    <div class="question">
+        <h1>Question 8: What is the average score for the entire team?</h1>
+        <h3>Answer: ` + avgTeamScore + ` Points</h3>
+    </div>
+`;
+
+// Append containers to document
+mainContainer.appendChild(timeContainer);
+mainContainer.appendChild(playerContainer);
+mainContainer.appendChild(teamContainer);
