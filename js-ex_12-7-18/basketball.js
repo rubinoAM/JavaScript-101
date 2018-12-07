@@ -112,7 +112,7 @@ function calcAvgTimePlayers(){
     for(i=0; i<players.length; i++){
     avgOfAvgMinutes += players[i].avgMinutesPlayed;
     }
-    console.log((avgOfAvgMinutes/players.length).toFixed(1));
+    return((avgOfAvgMinutes/players.length).toFixed(1));
 }
 
 // Print the average playing time of the starters
@@ -125,7 +125,7 @@ function calcAvgTimeStarters(){
             numStarters += 1;
         }
     }
-    console.log((avgOfAvgMinutes/numStarters).toFixed(1));
+    return((avgOfAvgMinutes/numStarters).toFixed(1));
 }
 
 // Print the average playing time of the bench players
@@ -138,7 +138,7 @@ function calcAvgTimeBenchPlayers(){
             numBench += 1;
         }
     }
-    console.log((avgOfAvgMinutes/numBench).toFixed(1));
+    return((avgOfAvgMinutes/numBench).toFixed(1));
 }
 
 // Create an array of the names of each player
@@ -147,7 +147,7 @@ function arrayPlayerNames(){
     for(i=0; i<players.length; i++){
         playerArray.push(players[i]['name']);
     }
-    console.log(playerArray);
+    return(playerArray);
 }
 
 // Create an array of the names of the players who average more than 10 points per game
@@ -158,7 +158,7 @@ function moreThanTenPointsPerGame(){
             playerArray.push(players[i]['name']);
         }
     }
-    console.log(playerArray);
+    return(playerArray);
 }
 
 // Create an array of the names of the players who average more than 5 rebounds per game
@@ -169,7 +169,7 @@ function moreThanFiveReboundsPerGame(){
             playerArray.push(players[i]['name']);
         }
     }
-    console.log(playerArray);
+    return(playerArray);
 }
 
 // Determine which player has the most points played per minute
@@ -180,7 +180,7 @@ function mostPointsPerMinute(){
             playerMostPointsPerMinute = players[i+1]["name"];
         }
     }
-    console.log(playerMostPointsPerMinute);
+    return(playerMostPointsPerMinute);
 }
 
 // Determine the average points score for the team as a whole
@@ -189,15 +189,15 @@ function avgTeamScore(){
     for(i=0; i<players.length; i++){
         totalTeamScore += players[i]["avgPoints"];
     }
-    console.log((totalTeamScore/players.length).toFixed(1));
+    return((totalTeamScore/players.length).toFixed(1));
 }
 
-// Call all functions
-calcAvgTimePlayers();
-calcAvgTimeStarters();
-calcAvgTimeBenchPlayers();
-arrayPlayerNames();
-moreThanTenPointsPerGame();
-moreThanFiveReboundsPerGame();
-mostPointsPerMinute();
-avgTeamScore();
+// Assign function results to variables
+avgTimPlay = calcAvgTimePlayers();
+avgTimStrt = calcAvgTimeStarters();
+avgTimBnch = calcAvgTimeBenchPlayers();
+arrPlaName = arrayPlayerNames();
+moreTenPt = moreThanTenPointsPerGame();
+moreFiveRbd = moreThanFiveReboundsPerGame();
+mostPtPerMin = mostPointsPerMinute();
+avgTeamScore = avgTeamScore();
