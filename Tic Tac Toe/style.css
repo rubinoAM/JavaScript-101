@@ -15,6 +15,7 @@ body{
     width:200px; height: 200px;
     outline:none; /*Removes blue line from clicking our squares*/
     font-size:60px;
+    font-family:'Dosis';
     transition:0.15s ease-out;
 }
 
@@ -32,6 +33,23 @@ body{
 #C1:hover{border-top-right-radius: 100px;}
 #C3:hover{border-bottom-right-radius: 100px;}
 
+.reset-btn{
+    background-color:rgb(209, 82, 43);
+    color:white;
+    font-size:25px;
+    font-family:'Dosis';
+    position:absolute;
+    top:25px;
+    right:25px;
+    border:none;
+    transition:0.15s ease-out;}
+
+.reset-btn:hover{
+    border-radius:15px;
+    background-color:red;
+    transition:0.3s ease-out;
+}
+
 .board-row{
     margin-bottom:4px;
 }
@@ -39,6 +57,7 @@ body{
 #message{
     text-align:center;
     font-size:40px;
+    font-weight:800;
     color:white;
     margin-bottom:20px;
 }

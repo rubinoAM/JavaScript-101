@@ -92,3 +92,19 @@ function endGame(winningCombo, whoWon){
         }
     }
 }
+
+function resetGame(){
+    document.querySelector('#message').innerHTML = "It's Player Two's Turn!";
+    for (let i = 0;i<squares.length; i++){
+        if(squares[i].innerHTML == "X" || squares[i].innerHTML == "O"){
+            squares[i].innerHTML = "-";
+        }
+        if(squares[i].classList.contains('winning-square')){
+            squares[i].classList.remove('winning-square');
+        }
+        squares[i].disabled = false;
+    }
+    player1Squares = [];
+    player2Squares = [];
+    whosTurn = 1;
+}
