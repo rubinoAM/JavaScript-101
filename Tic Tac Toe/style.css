@@ -67,12 +67,20 @@ body{
 
 @media screen and (max-width:670px){
     .square{
-        width: 150px; height: 150px;
+        width: 150px; height: 150px;}
+    .reset-btn{
+        top:550px;
+        width:50%;
+        right:25vw;
+        font-size:30px;
     }
 }
 
 @media screen and (max-width:474px){
     .square{
-        width: 115px; height: 115px;
+        width: 115px; height: 115px;}
+    .reset-btn{
+        top:450px;
+        font-size:35px;
     }
 }
