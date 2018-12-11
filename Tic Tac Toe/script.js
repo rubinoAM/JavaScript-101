@@ -12,6 +12,8 @@
     7. Stop the game if someone won, otherwise let it keep going
 */
 
+let whosTurn = 1;
+
 const squares = document.getElementsByClassName('square');
 console.log(squares);
 
@@ -20,6 +22,13 @@ for (let i = 0;i<squares.length; i++){
     //We can an event listener to each one
     squares[i].addEventListener('click',function(event){ //Anonymous function
         console.dir(this);
-        this.innerHTML = "X";
+        if(this.innerHTML == '-'){
+            if(whosTurn === 1){     //Player 1
+                this.innerHTML = "X";
+                whosTurn = 2;}
+            else{                   //Player 2
+                this.innerHTML = "O";
+                whosTurn = 1;}
+        }
     }); //whatToListenTo.addEventListener(event,function)
 }
