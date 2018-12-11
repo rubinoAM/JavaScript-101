@@ -108,3 +108,37 @@ function resetGame(){
     player2Squares = [];
     whosTurn = 1;
 }
+
+function randomIndex(cap){
+    return Math.ceil(Math.random() * Math.ceil(cap));}
+
+function computerTurn(){
+    let possibleRows = ['A','B','C'];
+    let possibleCols = ['1','2','3'];
+
+    for (let i = 0;i<squares.length; i++){
+        if(squares[i].innerHTML == '-'){
+            compChoice = possibleRows[randomIndex(3)] + possibleCols[randomIndex(3)];
+            if (squares[i].id == compChoice){
+                squares[i].innerHTML = "O";
+                break;}
+        }
+    }
+}
+
+function noDisplay(element){
+    element.style.display = "none";
+}
+
+function clearOverlay(event){
+    let overlay = document.querySelector('#overlay');
+    let options = document.querySelector('#option-container');
+
+    noDisplay(options);
+    overlay.classList.add('fade-out');
+
+    window.setTimeout(function(){
+        noDisplay(overlay)
+    },1000);
+}
+
