@@ -1,0 +1,88 @@
+body{
+    height:100vh;
+    text-align:center;
+    color:white;
+    background:url('https://www.arizona-leisure.com/gfx/gallery/sunsets/sedona-sunset.jpg') center no-repeat;
+    background-size:cover;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    justify-content: center;}
+
+#countdown-div h1{
+    display:flex;
+    align-content: flex-start;
+    font-family:'Amatic SC';
+    font-size:80px;
+    margin:40px 0 0;
+    text-shadow:3px 3px 5px #333;
+    position:relative;}
+
+.time-unit{
+    font-family:"Open Sans";
+    font-size:13pt;
+    /*background-color:rgba(255,255,255,0.8);*/
+    background: -moz-linear-gradient(top, rgba(30,87,153,0.7) 0%, rgba(41,137,216,0.7) 50%, rgba(125,185,232,0.7) 100%);
+    background: -webkit-linear-gradient(top, rgba(30,87,153,0.7) 0%,rgba(41,137,216,0.7) 50%,rgba(125,185,232,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(30,87,153,0.7) 0%,rgba(41,137,216,0.7) 50%,rgba(125,185,232,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b31e5799', endColorstr='#b37db9e8',GradientType=0 );
+    margin:25px 10px 0 10px;
+    width:140px;
+    box-shadow:3px 3px 5px #333;}
+
+.time-unit span{
+    background-color:#0f0942;}
+
+.time-unit, .time-unit span{
+    color:white;
+    display:inline-block;
+    padding:10px;
+    border-radius:5px;}
+
+.time-unit span:first-child{
+    width:20px;}
+.time-unit span:nth-child(2){
+    width:75px;}
+
+.message{
+    /*background-color:rgba(255,255,255,0.8);*/
+    background: -moz-linear-gradient(top, rgba(30,87,153,0.7) 0%, rgba(41,137,216,0.7) 50%, rgba(125,185,232,0.7) 100%);
+    background: -webkit-linear-gradient(top, rgba(30,87,153,0.7) 0%,rgba(41,137,216,0.7) 50%,rgba(125,185,232,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(30,87,153,0.7) 0%,rgba(41,137,216,0.7) 50%,rgba(125,185,232,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b31e5799', endColorstr='#b37db9e8',GradientType=0 );
+    margin:15px auto 0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    height:75px;
+    width:90%;
+    border-radius:5px;
+    color:black;
+    box-shadow:3px 3px 5px #333;}
+
+.msg-space{
+    font-family:"Open Sans";
+    font-size:18pt;
+    align-self:center;
+    width:98%;
+    color:white;
+    height:50px;
+    background-color:#0f0942;
+    padding-top:13px;
+    border-radius:15px;}
+
+@media screen and (max-width:950px){
+    .time-unit:nth-child(4), .time-unit:nth-child(5), .time-unit:nth-child(6){
+        
+    }
+
+    #countdown-div h1{
+        font-size:65px;
+    }
+}
+
+@media screen and (max-width:715px){
+    #countdown-div h1{
+        font-size:50px;
+    }
+}
