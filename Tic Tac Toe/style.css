@@ -1,0 +1,22 @@
+#board{
+    max-width:640px; min-width:320px;
+    margin:auto;
+}
+
+.square{
+    background-color:rgb(238, 163, 125);
+    border:2px solid black;
+    width:185px; height: 185px;
+    outline:none; /*Removes blue line from clicking our squares*/
+    font-size:60px;
+    transition:0.15s ease-out;
+}
+
+.square:hover{
+    background-color:rgb(192, 28, 28);
+    transition:0.3s ease-out;
+}
+
+.board-row{
+    margin-bottom:4px;
+}

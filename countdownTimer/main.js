@@ -27,8 +27,10 @@ function updateTimer(){
        minutes === 0 FALSE */ 
     if(seconds === 0){
         document.querySelector('.msg-space').innerHTML = "One minute closer to liftoff!";
+        document.querySelector('.message').classList.add("shake");
     }else{
-        document.querySelector('.msg-space').innerHTML = "-----------------------------------";
+        document.querySelector('.msg-space').innerHTML = "-----------------------------------";  
+        document.querySelector('.message').classList.remove("shake");
     }
 }
 
