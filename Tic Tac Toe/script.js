@@ -75,6 +75,20 @@ function checkWin(playerSquares, whoMarked){
         if(squareCount == 3){
             console.log("Player " + whoMarked + " Won!");
             console.log(winningCombos[i]);
+            endGame(winningCombos[i], whoMarked)
+        }
+    }
+}
+
+function endGame(winningCombo, whoWon){
+    document.querySelector('#message').innerHTML = `Congratulations to Player ${whoWon}!`;
+    for (let i = 0; i < winningCombo.length; i++){
+        const winningSquare = winningCombo[i];
+        const squareElem = document.getElementById(winningSquare);
+        console.log(squareElem);
+        squareElem.className += ' winning-square';
+        for (let j = 0; j < squares.length; j++){
+            squares[j].disabled = true;
         }
     }
 }
