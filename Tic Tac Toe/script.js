@@ -13,6 +13,18 @@
 */
 
 let whosTurn = 1;
+let player1Squares = []; //Make an empty array for both players
+let player2Squares = []; //Push each new square into the appropriate array
+const winningCombos = [
+    ["A1","B1","C1"],
+    ["A1","A2","A3"],
+    ["A1","B2","C3"],
+    ["B1","B2","B3"],
+    ["C1","C2","C3"],
+    ["A2","B2","C2"],
+    ["A3","B3","C3"],
+    ["A3","B2","C1"],
+];
 
 const squares = document.getElementsByClassName('square');
 console.log(squares);
@@ -25,10 +37,44 @@ for (let i = 0;i<squares.length; i++){
         if(this.innerHTML == '-'){
             if(whosTurn === 1){     //Player 1
                 this.innerHTML = "X";
-                whosTurn = 2;}
+                player1Squares.push(this.id);
+                whosTurn = 2;
+                document.getElementById('message').innerHTML = "It's Player Two's Turn!";
+                checkWin(player1Squares,1);}
             else{                   //Player 2
                 this.innerHTML = "O";
-                whosTurn = 1;}
+                player2Squares.push(this.id);
+                whosTurn = 1;
+                document.getElementById('message').innerHTML = "It's Player One's Turn!";
+                checkWin(player2Squares,2);}
+        } else {
+            document.getElementById('message').innerHTML = "That space is taken.";
         }
     }); //whatToListenTo.addEventListener(event,function)
+}
+
+function checkWin(playerSquares, whoMarked){
+    console.log("Checking for a winner...");
+    //console.log(playerSquares);
+    //console.log(whoMarked);
+
+    //OUTER LOOP
+    for(let i = 0;i<winningCombos.length;i++){
+        let squareCount = 0;
+        //INNER LOOP
+        //winningCombos[i] = The Winning Combo we're parsing
+        for(let j = 0;j<winningCombos[i].length;j++){
+            //winningCombos[i][j] = The Square in the combo we're parsing
+            const winningSquare = winningCombos[i][j]
+            if(playerSquares.includes(winningSquare)){
+                //They got the square!
+                squareCount++;
+            }
+        }
+
+        if(squareCount == 3){
+            console.log("Player " + whoMarked + " Won!");
+            console.log(winningCombos[i]);
+        }
+    }
 }

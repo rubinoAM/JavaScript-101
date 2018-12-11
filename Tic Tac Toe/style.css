@@ -17,6 +17,17 @@
     transition:0.3s ease-out;
 }
 
+#A1:hover{border-top-left-radius: 100px;}
+#A3:hover{border-bottom-left-radius: 100px;}
+#C1:hover{border-top-right-radius: 100px;}
+#C3:hover{border-bottom-right-radius: 100px;}
+
 .board-row{
     margin-bottom:4px;
+}
+
+#message{
+    text-align:center;
+    font-size:40px;
+    color:green;
 }
