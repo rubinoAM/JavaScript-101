@@ -12,8 +12,8 @@
     <div id="overlay"></div>
     <div id="option-container">
         <h1>How many players will be playing?</h1>
-        <button class="1p-btn" onclick="clearOverlay(event)">1 Player</button>
-        <button class="2p-btn" onclick="clearOverlay(event)">2 Player</button>
+        <button class="1p-btn" onclick="clearOverlay(event); onePlayerGame(event)">1 Player</button>
+        <button class="2p-btn" onclick="clearOverlay(event); twoPlayerGame(event)">2 Player</button>
     </div>
     <div id="message">It's Player One's Turn!</div> <!--Holds messages for the players-->
     <div id="board">
