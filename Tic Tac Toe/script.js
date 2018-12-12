@@ -103,24 +103,27 @@ function onePlayerGame(event){
         let possibleRows = ['A','B','C'];
         let possibleCols = ['1','2','3'];
         document.querySelector("#message").innerHTML = "It's The Computer's Turn!";
-    
-        window.setTimeout(function(){
+
+        window.setTimeout(function(){ //Force compChoice to eventually equal squares[i].id
             let spacesAdded = 0;
-            if(spacesAdded === 0){
-                for (let i = 0;i<squares.length; i++){
-                    compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)];console.log(compChoice);
+            for (let i = 0;i<squares.length; i++){
+                if(spacesAdded === 0){
+                    let compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)]; console.log(compChoice);
+                    console.log(squares[i].innerHTML === "-");
                     if(squares[i].innerHTML === "-"){
+                        console.log(squares[i].id == compChoice);
                         if(squares[i].id == compChoice){
+                            //console.log(squares[i].id);
                             squares[i].innerHTML = "O";
                             player2Squares.push(squares[i].id);
-                            spacesAdded++; console.log(compChoice + " " + spacesAdded);
+                            spacesAdded++; //console.log(compChoice + " " + spacesAdded);
                         }
                     }
                 }
-                spacesAdded = 0;
             }
+            spacesAdded = 0;
             checkWin(player2Squares,2);
-            console.log(spacesAdded);
+            //console.log(spacesAdded);
             document.querySelector('#message').innerHTML = "It's Your Turn!";
         },1500);
 
