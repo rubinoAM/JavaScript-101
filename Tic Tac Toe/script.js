@@ -74,6 +74,7 @@ function onePlayerGame(event){
                     player1Squares.push(this.id);
                     checkWin(player1Squares,1);
                     if(singlePlayerContinue == true){
+                        whosTurn = 2;
                         computerTurn();}
                 }
             }
@@ -84,29 +85,28 @@ function onePlayerGame(event){
         return (Math.floor(Math.random() * (max-min)) + min)-1;}
     
     function computerTurn(){
-        whosTurn = 2;
         let possibleRows = ['A','B','C'];
         let possibleCols = ['1','2','3'];
         document.querySelector("#message").innerHTML = "It's The Computer's Turn!";
 
         window.setTimeout(function(){ //Force compChoice to eventually equal squares[i].id
             let spacesAdded = 0;
-            for (let i = 0;i<squares.length; i++){
-                if(spacesAdded === 0){
-                    let compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)]; console.log(compChoice);
-                    console.log(squares[i].innerHTML === "-");
+            for (let i = 0; i<squares.length; i++){
+                let compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)]; console.log(compChoice);
+                console.log(squares[i]);
+                console.log(player1Squares); console.log(player2Squares);
+                if(spacesAdded ===0){
                     if(squares[i].innerHTML === "-"){
-                        console.log(squares[i].id == compChoice);
-                        if(squares[i].id == compChoice){
-                            //console.log(squares[i].id);
+                        if(player1Squares.includes(compChoice) == false && player2Squares.includes(compChoice) == false){
                             squares[i].innerHTML = "O";
                             player2Squares.push(squares[i].id);
-                            spacesAdded++;
+                            spacesAdded = 1;
                         }
                     }
                 }
             }
             spacesAdded = 0;
+            dog = 0;
             checkWin(player2Squares,2);
             document.querySelector('#message').innerHTML = "It's Your Turn!";
         },1500);
