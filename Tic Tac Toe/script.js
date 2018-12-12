@@ -1,16 +1,3 @@
-//console.log("Dave's not here, man.");
-
-/*
-    1. Set Up Board
-    2. User should be able to click on a button
-        -When the click happens, the square should have that player's mark
-    3. If it's X's turn, otherwise put a O in
-    4. In order to accomplish 3, we need to keep trak of who's turn it is
-        -After X goes, it becomes O's turn, and vice versa
-    5. Keep other player from taking a square
-    6. See if someone won! If so, congratulate the
-    7. Stop the game if someone won, otherwise let it keep going
-*/
 let oneHumanGame = false;
 let twoHumanGame = false;
 
@@ -79,8 +66,6 @@ function onePlayerGame(event){
     oneHumanGame = true;
     document.querySelector('#message').innerHTML = "It's Your Turn!";
     for (let i = 0;i<squares.length; i++){
-        //Each individual square is squares[i]
-        //We can an event listener to each one
         squares[i].addEventListener('click',function(event){ //Anonymous function
             console.dir(this);
             if(this.innerHTML === '-'){
@@ -116,14 +101,13 @@ function onePlayerGame(event){
                             //console.log(squares[i].id);
                             squares[i].innerHTML = "O";
                             player2Squares.push(squares[i].id);
-                            spacesAdded++; //console.log(compChoice + " " + spacesAdded);
+                            spacesAdded++;
                         }
                     }
                 }
             }
             spacesAdded = 0;
             checkWin(player2Squares,2);
-            //console.log(spacesAdded);
             document.querySelector('#message').innerHTML = "It's Your Turn!";
         },1500);
 
@@ -181,7 +165,7 @@ function twoPlayerGame(event){
     document.querySelector('#message').innerHTML = "It's Player One's Turn!";
     for (let i = 0;i<squares.length; i++){
         //Each individual square is squares[i]
-        //We can an event listener to each one
+        //We can add an event listener to each one
         squares[i].addEventListener('click',function(event){ //Anonymous function
             console.dir(this);
             if(this.innerHTML === "-"){
