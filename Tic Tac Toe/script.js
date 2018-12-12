@@ -2,8 +2,8 @@ let oneHumanGame = false;
 let twoHumanGame = false;
 
 let whosTurn = 1;
-let player1Squares = []; //Make an empty array for both players
-let player2Squares = []; //Push each new square into the appropriate array
+let player1Squares = [];
+let player2Squares = [];
 const winningCombos = [
     ["A1","B1","C1"],
     ["A1","A2","A3"],
@@ -19,7 +19,6 @@ let player2Victories = 0;
 let singlePlayerContinue = true;
 
 const squares = document.getElementsByClassName('square');
-console.log(squares);
 
 function resetGame(){
     for (let i = 0;i<squares.length; i++){
@@ -66,10 +65,10 @@ function onePlayerGame(event){
     oneHumanGame = true;
     document.querySelector('#message').innerHTML = "It's Your Turn!";
     for (let i = 0;i<squares.length; i++){
-        squares[i].addEventListener('click',function(event){ //Anonymous function
+        squares[i].addEventListener('click',function(event){
             console.dir(this);
             if(this.innerHTML === '-'){
-                if(whosTurn === 1){     //Player 1
+                if(whosTurn === 1){
                     this.innerHTML = "X";
                     player1Squares.push(this.id);
                     checkWin(player1Squares,1);
@@ -87,7 +86,7 @@ function onePlayerGame(event){
     function computerTurn(){
         let possibleRows = ['A','B','C'];
         let possibleCols = ['1','2','3'];
-        document.querySelector("#message").innerHTML = "It's The Computer's Turn!";
+        document.querySelector("#message").innerHTML = "Computer's Turn!";
 
         window.setTimeout(function(){ //Force compChoice to eventually equal squares[i].id
             let spacesAdded = 0;
@@ -106,17 +105,15 @@ function onePlayerGame(event){
                 }
             }
             spacesAdded = 0;
-            dog = 0;
             checkWin(player2Squares,2);
-            document.querySelector('#message').innerHTML = "It's Your Turn!";
+            if(singlePlayerContinue == true){
+                document.querySelector('#message').innerHTML = "It's Your Turn!";}
         },1500);
 
         whosTurn = 1;
     }
 
     function checkWin(playerSquares, whoMarked){
-        console.log("Checking for a winner...");
-    
         //OUTER LOOP
         for(let i = 0;i<winningCombos.length;i++){
             let squareCount = 0;
@@ -141,17 +138,16 @@ function onePlayerGame(event){
         if(whoWon == 1){
             player1Victories += 1;
             console.log(player1Victories);
-            document.querySelector('#message').innerHTML = "You Beat The Computer!";
+            document.querySelector('#message').innerHTML = "Victory!";
         }
-        if(whoWon == 2){
+        else{
             player2Victories += 1;
             console.log(player2Victories);
-            document.querySelector('#message').innerHTML = "You Lost. Sorry!";
+            document.querySelector('#message').innerHTML = "Defeat...";
         }
         for (let i = 0; i < winningCombo.length; i++){
             const winningSquare = winningCombo[i];
             const squareElem = document.getElementById(winningSquare);
-            console.log(squareElem);
             squareElem.className += ' winning-square';
             for (let j = 0; j < squares.length; j++){
                 squares[j].disabled = true;
@@ -182,24 +178,17 @@ function twoPlayerGame(event){
                     document.getElementById('message').innerHTML = "It's Player One's Turn!";
                     checkWin(player2Squares,2);}
             }
-        }); //whatToListenTo.addEventListener(event,function)
+        });
     }
     
     function checkWin(playerSquares, whoMarked){
-        console.log("Checking for a winner...");
-        //console.log(playerSquares);
-        //console.log(whoMarked);
-    
         //OUTER LOOP
         for(let i = 0;i<winningCombos.length;i++){
             let squareCount = 0;
             //INNER LOOP
-            //winningCombos[i] = The Winning Combo we're parsing
             for(let j = 0;j<winningCombos[i].length;j++){
-                //winningCombos[i][j] = The Square in the combo we're parsing
                 const winningSquare = winningCombos[i][j]
                 if(playerSquares.includes(winningSquare)){
-                    //They got the square!
                     squareCount++;
                 }
             }
@@ -213,7 +202,7 @@ function twoPlayerGame(event){
     }
     
     function endGame(winningCombo, whoWon){
-        document.querySelector('#message').innerHTML = `Congratulations to Player ${whoWon}!`;
+        document.querySelector('#message').innerHTML = `Player ${whoWon} Wins!`;
         if(whoWon == 1){
             player1Victories += 1;
             console.log(player1Victories);}
@@ -223,7 +212,6 @@ function twoPlayerGame(event){
         for (let i = 0; i < winningCombo.length; i++){
             const winningSquare = winningCombo[i];
             const squareElem = document.getElementById(winningSquare);
-            console.log(squareElem);
             squareElem.className += ' winning-square';
             for (let j = 0; j < squares.length; j++){
                 squares[j].disabled = true;
