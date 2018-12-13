@@ -46,8 +46,28 @@ $('.hit-btn').click(()=>{
 
 //Stand
 $('.stand-btn').click(()=>{
-    
+    /*Rules for Dealer
+    1. If the player has less than 17, they must hit
+    2. If the player has 17 or more, they can't hit
+    */
+   let dealerTotal = calcTotal(dealerHand,'dealer');
+   while (dealerTotal < 17){
+       const topCard = theDeck.shift();
+       dealerHand.push(topCard);
+       placeCard('dealer',dealerHand.length,topCard);
+       dealerTotal = calcTotal(dealerHand,'dealer');
+   }
+   checkWin();
 });
+
+function checkWin(){
+    /*
+        1. If the player has > 21, you lose
+        2. If the dealer has > 21, they lose
+        3. If playerHand.length == 2 & total == 21, BLACKJACK
+        4. If dealerHand.length == 2 & total == 21, BLACKJACK
+    */
+}
 
 //Calculate Total for Player(s)
 function calcTotal(hand,who){

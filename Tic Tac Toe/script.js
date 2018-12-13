@@ -91,22 +91,23 @@ function onePlayerGame(event){
         document.querySelector("#message").innerHTML = "Computer's Turn!";
 
         window.setTimeout(function(){ //Force compChoice to eventually equal squares[i].id
-            let spacesAdded = 0;
-            for (let i = 0; i<squares.length; i++){
+            let spaceAdded = 0;
+
+            while(spaceAdded === 0){
                 let compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)]; console.log(compChoice);
-                console.log(squares[i]);
                 console.log(player1Squares); console.log(player2Squares);
-                if(spacesAdded ===0){
-                    if(squares[i].innerHTML === "-"){
-                        if(player1Squares.includes(compChoice) == false && player2Squares.includes(compChoice) == false){
-                            squares[i].innerHTML = "O";
-                            player2Squares.push(squares[i].id);
-                            spacesAdded = 1;
-                        }
+                let compSquare = document.getElementById(compChoice);
+                if(compSquare.innerHTML === "-"){
+                    console.log(player1Squares.includes(compChoice));
+                    console.log(player2Squares.includes(compChoice));
+                    if(!player1Squares.includes(compChoice) && !player2Squares.includes(compChoice)){
+                        compSquare.innerHTML = "O";
+                        player2Squares.push(compChoice);
+                        spaceAdded = 1;
                     }
                 }
             }
-            spacesAdded = 0;
+            spaceAdded = 0;
             checkWin(player2Squares,2);
             if(singlePlayerContinue == true){
                 document.querySelector('#message').innerHTML = "It's Your Turn!";}
