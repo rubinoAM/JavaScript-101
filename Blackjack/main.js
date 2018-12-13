@@ -1,11 +1,32 @@
 const freshDeck = createDeck();
 let theDeck = freshDeck.slice();
+let playerHand = [];
+let dealerHand = [];
 
 //Deal Function
 $('.deal-btn').click(()=>{
     //Shuffle
     shuffleDeck(theDeck);
+
+    //Dealing Out Cards
+    for(let c = 0; c <= 6; c++){
+        let topCard = theDeck.shift() //.shift() pulls out the first element in the array and returns it
+        playerHand.push(topCard);
+        placeCard('player',(c+1),playerHand[c]);
+        topCard = theDeck.shift();
+        dealerHand.push(topCard);
+        placeCard('dealer',(c+1),dealerHand[c]);
+    }
 })
+
+function placeCard(who,where,what){
+    //WHO: Player or Dealer
+    //WHERE: Slots (1 thru 6) in Hand
+    //WHAT: Card
+
+    const classSelector = `.${who}-cards .card-${where}`;
+    $(classSelector).html(`<img src="cards/${what}.png" />`);
+}
 
 function createDeck(){
     let newDeck = []; //Empty array for new deck
@@ -36,5 +57,4 @@ function shuffleDeck(deck){
         deck[rand1] = deck[rand2];
         deck[rand2] = safeCard;
     }
-    console.log(deck);
 }
