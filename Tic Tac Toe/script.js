@@ -16,6 +16,8 @@ const winningCombos = [
 ];
 let player1Victories = 0;
 let player2Victories = 0;
+
+
 let singlePlayerContinue = true;
 
 const squares = document.getElementsByClassName('square');
