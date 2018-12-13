@@ -3,6 +3,10 @@ let theDeck = freshDeck.slice();
 let playerHand = [];
 let dealerHand = [];
 
+$(document).ready(function(){
+    $('.reset-btn').attr("disabled","disabled").hide();
+});
+
 //Deal Function
 $('.deal-btn').click(()=>{
     //Get A Deal & Shuffle It
@@ -75,43 +79,43 @@ function checkWin(){
     let dealerTotal= calcTotal(dealerHand,'dealer');
     if(playerTotal > 21){
         alert("YOU LOSE!");
-        $('button').attr("disabled","disabled");
+        gameEnd();
     }
     else if(dealerTotal > 21){
         alert("YOU WIN!");
-        $('button').attr("disabled","disabled");
+        gameEnd();
     }
     else if(playerHand.length == 2 && playerTotal == 21){
         alert("BLACKJACK! YOU WIN!!");
-        $('button').attr("disabled","disabled");
+        gameEnd();
     }
     else if(dealerHand.length == 2 && dealerTotal == 21){
         alert("BLACKJACK! YOU LOSE!!");
-        $('button').attr("disabled","disabled");
+        gameEnd();
     }
     else if(dealerTotal >= 17 && playerHand.length == 6){
         if(playerTotal > dealerTotal){
             if(playerTotal < 21){
                 alert("YOU WIN!");
-                $('button').attr("disabled","disabled");
+                gameEnd();
             } else {
                 alert("YOU LOSE!");
-                $('button').attr("disabled","disabled");
+                gameEnd();
             }
         }
         else if(dealerTotal > playerTotal){
             if(dealerTotal < 21){
                 alert("YOU LOSE!");
-                $('button').attr("disabled","disabled");
+                gameEnd();
             } else {
                 alert("YOU WIN!");
-                $('button').attr("disabled","disabled");
+                gameEnd();
             }
         }
     }
     else{
         alert("DRAW!");
-        $('button').attr("disabled","disabled");
+        gameEnd();
     }
 }
 
@@ -165,4 +169,9 @@ function shuffleDeck(deck){
         deck[rand1] = deck[rand2];
         deck[rand2] = safeCard;
     }
+}
+
+function gameEnd(){
+    $('.buttons').children().attr("disabled","disabled").hide();
+    $('.reset-btn').attr("disabled",false).show();
 }
