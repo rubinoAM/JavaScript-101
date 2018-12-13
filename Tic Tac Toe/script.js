@@ -92,7 +92,6 @@ function onePlayerGame(event){
 
         window.setTimeout(function(){ //Force compChoice to eventually equal squares[i].id
             let spaceAdded = 0;
-
             while(spaceAdded === 0){
                 let compChoice = possibleRows[randomIndex(1,4)] + possibleCols[randomIndex(1,4)]; console.log(compChoice);
                 console.log(player1Squares); console.log(player2Squares);
@@ -126,6 +125,11 @@ function onePlayerGame(event){
                 if(playerSquares.includes(winningSquare)){
                     squareCount++;
                 }
+            }
+
+            if((player1Squares.length + player2Squares.length) >= 9 && squareCount < 3){
+                singlePlayerContinue = false;
+                document.querySelector('#message').innerHTML = "DRAW";
             }
     
             if(squareCount == 3){
@@ -194,6 +198,11 @@ function twoPlayerGame(event){
                 if(playerSquares.includes(winningSquare)){
                     squareCount++;
                 }
+            }
+
+            if((player1Squares.length + player2Squares.length) >= 9 && squareCount < 3){
+                singlePlayerContinue = false;
+                document.querySelector('#message').innerHTML = "DRAW";
             }
     
             if(squareCount == 3){
