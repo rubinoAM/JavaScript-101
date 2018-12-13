@@ -4,7 +4,7 @@ let twoHumanGame = false;
 let whosTurn = 1;
 let player1Squares = [];
 let player2Squares = [];
-const winningCombos = [
+const winningCombos = [     //Have computer loop through this so it can block the human player :p
     ["A1","B1","C1"],
     ["A1","A2","A3"],
     ["A1","B2","C3"],
@@ -17,8 +17,8 @@ const winningCombos = [
 let player1Victories = 0;
 let player2Victories = 0;
 
-
 let singlePlayerContinue = true;
+let checkDraw = 0;
 
 const squares = document.getElementsByClassName('square');
 
@@ -43,6 +43,7 @@ function resetGame(){
     }
     if(twoHumanGame == true){
         document.querySelector('#message').innerHTML = "It's Player One's Turn!";
+        checkDraw = 0;
         twoPlayerGame();
     }
 }
@@ -126,11 +127,6 @@ function onePlayerGame(event){
                     squareCount++;
                 }
             }
-
-            if((player1Squares.length + player2Squares.length) >= 9 && squareCount < 3){
-                singlePlayerContinue = false;
-                document.querySelector('#message').innerHTML = "DRAW";
-            }
     
             if(squareCount == 3){
                 console.log("Player " + whoMarked + " Won!");
@@ -146,6 +142,10 @@ function onePlayerGame(event){
             player1Victories += 1;
             console.log(player1Victories);
             document.querySelector('#message').innerHTML = "Victory!";
+        }
+        else if((player1Squares.length + player2Squares.length) >= 9){
+            singlePlayerContinue = false;
+            document.querySelector('#message').innerHTML = "DRAW";
         }
         else{
             player2Victories += 1;
@@ -177,7 +177,8 @@ function twoPlayerGame(event){
                     player1Squares.push(this.id);
                     whosTurn = 2;
                     document.getElementById('message').innerHTML = "It's Player Two's Turn!";
-                    checkWin(player1Squares,1);}
+                    checkWin(player1Squares,1);
+                }
                 else{                   //Player 2
                     this.innerHTML = "O";
                     player2Squares.push(this.id);
@@ -185,7 +186,12 @@ function twoPlayerGame(event){
                     document.getElementById('message').innerHTML = "It's Player One's Turn!";
                     checkWin(player2Squares,2);}
             }
-        });
+
+            console.log(checkDraw);
+            if((player1Squares.length + player2Squares.length) == 9 && checkDraw == 0){
+                document.getElementById('message').innerHTML = "DRAW";
+            }
+        });       
     }
     
     function checkWin(playerSquares, whoMarked){
@@ -198,11 +204,6 @@ function twoPlayerGame(event){
                 if(playerSquares.includes(winningSquare)){
                     squareCount++;
                 }
-            }
-
-            if((player1Squares.length + player2Squares.length) >= 9 && squareCount < 3){
-                singlePlayerContinue = false;
-                document.querySelector('#message').innerHTML = "DRAW";
             }
     
             if(squareCount == 3){
@@ -217,10 +218,13 @@ function twoPlayerGame(event){
         document.querySelector('#message').innerHTML = `Player ${whoWon} Wins!`;
         if(whoWon == 1){
             player1Victories += 1;
-            console.log(player1Victories);}
+            console.log(player1Victories);
+            checkDraw += 1;}
         else if(whoWon == 2){
             player2Victories += 1;
-            console.log(player2Victories);}
+            console.log(player2Victories);
+            checkDraw += 1;}
+
         for (let i = 0; i < winningCombo.length; i++){
             const winningSquare = winningCombo[i];
             const squareElem = document.getElementById(winningSquare);
