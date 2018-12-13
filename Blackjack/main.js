@@ -42,6 +42,7 @@ $('.hit-btn').click(()=>{
     playerHand.push(topCard);
     placeCard('player',playerHand.length,topCard);
     calcTotal(playerHand,'player');
+    checkWin();
 });
 
 //Stand
@@ -66,7 +67,52 @@ function checkWin(){
         2. If the dealer has > 21, they lose
         3. If playerHand.length == 2 & total == 21, BLACKJACK
         4. If dealerHand.length == 2 & total == 21, BLACKJACK
+        5. If player > dealer, player wins
+        6. If dealer > player, dealer wins
+        7. Else... push (tie)
     */
+    let playerTotal= calcTotal(playerHand,'player');
+    let dealerTotal= calcTotal(dealerHand,'dealer');
+    if(playerTotal > 21){
+        alert("YOU LOSE!");
+        $('button').attr("disabled","disabled");
+    }
+    else if(dealerTotal > 21){
+        alert("YOU WIN!");
+        $('button').attr("disabled","disabled");
+    }
+    else if(playerHand.length == 2 && playerTotal == 21){
+        alert("BLACKJACK! YOU WIN!!");
+        $('button').attr("disabled","disabled");
+    }
+    else if(dealerHand.length == 2 && dealerTotal == 21){
+        alert("BLACKJACK! YOU LOSE!!");
+        $('button').attr("disabled","disabled");
+    }
+    else if(dealerTotal >= 17 && playerHand.length == 6){
+        if(playerTotal > dealerTotal){
+            if(playerTotal < 21){
+                alert("YOU WIN!");
+                $('button').attr("disabled","disabled");
+            } else {
+                alert("YOU LOSE!");
+                $('button').attr("disabled","disabled");
+            }
+        }
+        else if(dealerTotal > playerTotal){
+            if(dealerTotal < 21){
+                alert("YOU LOSE!");
+                $('button').attr("disabled","disabled");
+            } else {
+                alert("YOU WIN!");
+                $('button').attr("disabled","disabled");
+            }
+        }
+    }
+    else{
+        alert("DRAW!");
+        $('button').attr("disabled","disabled");
+    }
 }
 
 //Calculate Total for Player(s)
