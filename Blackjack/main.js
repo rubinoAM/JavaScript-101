@@ -4,7 +4,7 @@ let playerHand = [];
 let dealerHand = [];
 
 $(document).ready(function(){
-    $('.reset-btn').attr("disabled","disabled").hide();
+    $('.reset-btn').hide();
 });
 
 //Deal Function
@@ -65,6 +65,73 @@ $('.stand-btn').click(()=>{
    checkWin();
 });
 
+$('.reset-btn').click(()=>{
+    //Player
+    $('.player-cards').children().empty();
+    $('.player-total').html("0");
+    playerHand = [];
+
+    //Dealer
+    $('.dealer-cards').children().empty();
+    $('.dealer-total').html("0");
+    dealerHand = [];
+
+    $('.buttons').children().show();
+    $('.reset-btn').hide();
+});
+
+//Calculate Total for Player(s)
+function calcTotal(hand,who){
+    //Find out the total and put it in the DOM
+    let handTotal = 0;
+    hand.forEach((card,i)=>{
+        let cardValue = Number(card.slice(0,-1));
+        if(cardValue >= 10){
+            cardValue = 10;
+        }
+        handTotal += cardValue;
+    });
+    $(`.${who}-total`).html(handTotal);
+    return handTotal;
+}
+
+function placeCard(who,where,what){
+    //WHO: Player or Dealer | WHERE: Slots (1 thru 6) in Hand | WHAT: Card
+    const classSelector = `.${who}-cards .card-${where}`;
+    $(classSelector).html(`<img src="cards/${what}.png" />`);
+}
+
+function createDeck(){
+    let newDeck = []; //Empty array for new deck
+    const suits = ['h','c','d','s'] //All possible suits in a deck
+
+    //Outer Loop: For each suit
+
+    //A forEach loop takes a function as an argument
+    //The function gets two args: 1) What to call this in element in loop 2) What index the loop's on
+    suits.forEach((s, index)=>{
+        //Inner Loop: For each card
+        for(let c=1; c<= 13; c++){
+            newDeck.push(`${c}${s}`);
+        }
+    });
+    return newDeck;
+}
+
+function shuffleDeck(deck){
+    //When the loop is done, the array will be shuffled
+    for(let i = 0; i < 1000; i++){
+        let rand1 = Math.floor(Math.random()*52);
+        let rand2 = Math.floor(Math.random()*52);
+
+        //Switch deck[rand1] with deck[rand2]
+        //WE NEED TO SAVE THE VALUE OF ONE OF THEM TO KEEP FOR LATER
+        let safeCard = deck[rand1];
+        deck[rand1] = deck[rand2];
+        deck[rand2] = safeCard;
+    }
+}
+
 function checkWin(){
     /*
         1. If the player has > 21, you lose
@@ -119,59 +186,7 @@ function checkWin(){
     }
 }
 
-//Calculate Total for Player(s)
-function calcTotal(hand,who){
-    //Find out the total and put it in the DOM
-    let handTotal = 0;
-    hand.forEach((card,i)=>{
-        let cardValue = Number(card.slice(0,-1));
-        if(cardValue >= 10){
-            cardValue = 10;
-        }
-        handTotal += cardValue;
-    });
-    $(`.${who}-total`).html(handTotal);
-    return handTotal;
-}
-
-function placeCard(who,where,what){
-    //WHO: Player or Dealer | WHERE: Slots (1 thru 6) in Hand | WHAT: Card
-    const classSelector = `.${who}-cards .card-${where}`;
-    $(classSelector).html(`<img src="cards/${what}.png" />`);
-}
-
-function createDeck(){
-    let newDeck = []; //Empty array for new deck
-    const suits = ['h','c','d','s'] //All possible suits in a deck
-
-    //Outer Loop: For each suit
-
-    //A forEach loop takes a function as an argument
-    //The function gets two args: 1) What to call this in element in loop 2) What index the loop's on
-    suits.forEach((s, index)=>{
-        //Inner Loop: For each card
-        for(let c=1; c<= 13; c++){
-            newDeck.push(`${c}${s}`);
-        }
-    });
-    return newDeck;
-}
-
-function shuffleDeck(deck){
-    //When the loop is done, the array will be shuffled
-    for(let i = 0; i < 1000; i++){
-        let rand1 = Math.floor(Math.random()*52);
-        let rand2 = Math.floor(Math.random()*52);
-
-        //Switch deck[rand1] with deck[rand2]
-        //WE NEED TO SAVE THE VALUE OF ONE OF THEM TO KEEP FOR LATER
-        let safeCard = deck[rand1];
-        deck[rand1] = deck[rand2];
-        deck[rand2] = safeCard;
-    }
-}
-
 function gameEnd(){
-    $('.buttons').children().attr("disabled","disabled").hide();
-    $('.reset-btn').attr("disabled",false).show();
+    $('.buttons').children().hide();
+    $('.reset-btn').show();
 }
