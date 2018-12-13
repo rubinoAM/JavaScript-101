@@ -5,25 +5,51 @@ let dealerHand = [];
 
 //Deal Function
 $('.deal-btn').click(()=>{
-    //Shuffle
+    //Get A Deal & Shuffle It
+    theDeck= freshDeck.slice();
     shuffleDeck(theDeck);
 
     //Dealing Out Cards
-    for(let c = 0; c <= 6; c++){
+    let topCard = theDeck.shift();
+    playerHand.push(topCard);
+    topCard = theDeck.shift();
+    dealerHand.push(topCard);
+    topCard = theDeck.shift();
+    playerHand.push(topCard);
+    topCard = theDeck.shift();
+    dealerHand.push(topCard);
+
+    placeCard('player',1,playerHand[0]);
+    placeCard('dealer',1,dealerHand[0]);
+    placeCard('player',2,playerHand[1]);
+    placeCard('dealer',2,dealerHand[1]);
+    calcTotal(playerHand,'player');
+    calcTotal(dealerHand,'dealer');
+
+    /*for(let c = 0; c <= 6; c++){
         let topCard = theDeck.shift() //.shift() pulls out the first element in the array and returns it
         playerHand.push(topCard);
         placeCard('player',(c+1),playerHand[c]);
         topCard = theDeck.shift();
         dealerHand.push(topCard);
         placeCard('dealer',(c+1),dealerHand[c]);
-    }
+    }*/
 })
 
-function placeCard(who,where,what){
-    //WHO: Player or Dealer
-    //WHERE: Slots (1 thru 6) in Hand
-    //WHAT: Card
+//Calculate Total for Player(s)
+function calcTotal(hand,who){
+    //Find out the total and put it in the DOM
+    let handTotal = 0;
+    hand.forEach((card,i)=>{
+        let cardValue = Number(card.slice(0,-1));
+        handTotal += cardValue;
+    });
+    $(`.${who}-total`).html(handTotal);
+    return handTotal;
+}
 
+function placeCard(who,where,what){
+    //WHO: Player or Dealer | WHERE: Slots (1 thru 6) in Hand | WHAT: Card
     const classSelector = `.${who}-cards .card-${where}`;
     $(classSelector).html(`<img src="cards/${what}.png" />`);
 }
