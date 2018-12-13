@@ -36,12 +36,28 @@ $('.deal-btn').click(()=>{
     }*/
 })
 
+//Hit
+$('.hit-btn').click(()=>{
+    const topCard = theDeck.shift();
+    playerHand.push(topCard);
+    placeCard('player',playerHand.length,topCard);
+    calcTotal(playerHand,'player');
+});
+
+//Stand
+$('.stand-btn').click(()=>{
+    
+});
+
 //Calculate Total for Player(s)
 function calcTotal(hand,who){
     //Find out the total and put it in the DOM
     let handTotal = 0;
     hand.forEach((card,i)=>{
         let cardValue = Number(card.slice(0,-1));
+        if(cardValue >= 10){
+            cardValue = 10;
+        }
         handTotal += cardValue;
     });
     $(`.${who}-total`).html(handTotal);
