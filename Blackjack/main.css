@@ -2,10 +2,10 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     background: rgb(22,55,159);
-background: -moz-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
-background: -webkit-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
-background: linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endColorstr="#12f797",GradientType=1) fixed;
+    background: -moz-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+    background: -webkit-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+    background: linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endColorstr="#12f797",GradientType=1) fixed;
 }
 
 .table{
@@ -22,26 +22,26 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 .scores{
     margin:0 auto;
     text-align:center;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     background-color:#6afae7;
     color:rgb(72, 70, 190);
     width:40%;
     height:60px;
     border-radius:10px;
+    padding-bottom:3px;
 }
 
 .scores h3{
     font-size:30px;
-    font-weight:400;
+    font-weight:200;
     position:relative;
-    top:3px;
 }
 
 .scores span{
     font-size:18px;
     position:relative;
-    bottom:15px;
+    bottom:21px;
 }
 
 .player-score{
@@ -80,7 +80,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     border:none;
     padding:10px 20px;
     font-size:18px;
-    font-family:'Ubuntu';
+    font-family:'Poppins';
     margin:0 10px;
     background-color:#6afae7;
     color:rgb(72, 70, 190);
@@ -143,18 +143,23 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     }
 
     .scores h3{
-        top:6px;
-        font-size:26px;
+        top:3px;
+        font-size:28px;
     }
 
     .scores span{
         font-size:16px;
-        bottom:10px;
+        bottom:18px;
     }
 
     .card{
         width:9%;
         height:10vh;
+    }
+
+    .btn{
+        width:100%;
+        margin:0;
     }
 }
 
