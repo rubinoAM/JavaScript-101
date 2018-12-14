@@ -10,6 +10,11 @@ body{
 
 .table{
     background-color:#6afae7;
+    background: -moz-linear-gradient(180deg, rgba(106,250,231,1) 0%, rgba(14,197,254,1) 45%, rgba(66,95,213,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(106,250,231,1) 0%, rgba(14,197,254,1) 45%, rgba(66,95,213,1) 100%);
+    background: linear-gradient(180deg, rgba(106,250,231,1) 0%, rgba(14,197,254,1) 45%, rgba(66,95,213,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6afae7",endColorstr="#425fd5",GradientType=1);
+    box-shadow: 2px 9px 15px rgb(98, 112, 175);
     border-radius: 0 0 70px 70px;
     padding:30px 0;
     margin:0 auto;

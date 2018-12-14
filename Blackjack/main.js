@@ -4,8 +4,8 @@ let playerHand = [];
 let dealerHand = [];
 
 $(document).ready(function(){
-    $('.hit-btn').attr('disabled','disabled');
-    $('.stand-btn').attr('disabled','disabled');
+    $('.hit-btn').prop('disabled',true);
+    $('.stand-btn').prop('disabled',true);
     $('.reset-btn').hide();
 });
 
@@ -33,8 +33,8 @@ $('.deal-btn').click(()=>{
     calcTotal(dealerHand,'dealer');
 
     $('.deal-btn').hide();
-    $('.hit-btn').attr('disabled',false);
-    $('.stand-btn').attr('disabled',false);
+    $('.hit-btn').prop('disabled',false);
+    $('.stand-btn').prop('disabled',false);
 })
 
 //Hit
@@ -95,7 +95,12 @@ function calcTotal(hand,who){
 function placeCard(who,where,what){
     //WHO: Player or Dealer | WHERE: Slots (1 thru 6) in Hand | WHAT: Card
     const classSelector = `.${who}-cards .card-${where}`;
-    $(classSelector).html(`<img src="cards/${what}.png" />`);
+    if(who == 'player'){
+        $(classSelector).html(`<img src="cards/${what}.png" />`);
+    }
+    else{
+        $(classSelector).html(`<img src="cards/back.png" />`);
+    }
 }
 
 function createDeck(){
@@ -143,42 +148,69 @@ function checkWin(){
     let dealerTotal= calcTotal(dealerHand,'dealer');
     if(playerTotal > 21){
         alert("YOU LOSE!");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
         gameEnd();
     }
     else if(dealerTotal > 21){
         alert("YOU WIN!");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
         gameEnd();
     }
     else if(playerHand.length == 2 && playerTotal == 21){
         alert("BLACKJACK! YOU WIN!!");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
         gameEnd();
     }
     else if(dealerHand.length == 2 && dealerTotal == 21){
         alert("BLACKJACK! YOU LOSE!!");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
         gameEnd();
     }
     else if(dealerTotal >= 17 && playerHand.length == 6){
         if(playerTotal > dealerTotal){
             if(playerTotal < 21){
                 alert("YOU WIN!");
+                for(let i = 0; i < dealerHand.length; i++){
+                    flipCards('dealer',i+1,dealerHand[i]);
+                }
                 gameEnd();
             } else {
                 alert("YOU LOSE!");
+                for(let i = 0; i < dealerHand.length; i++){
+                    flipCards('dealer',i+1,dealerHand[i]);
+                }
                 gameEnd();
             }
         }
         else if(dealerTotal > playerTotal){
             if(dealerTotal < 21){
                 alert("YOU LOSE!");
+                for(let i = 0; i < dealerHand.length; i++){
+                    flipCards('dealer',i+1,dealerHand[i]);
+                }
                 gameEnd();
             } else {
                 alert("YOU WIN!");
+                for(let i = 0; i < dealerHand.length; i++){
+                    flipCards('dealer',i+1,dealerHand[i]);
+                }
                 gameEnd();
             }
         }
     }
     else{
         alert("DRAW!");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
         gameEnd();
     }
 }
@@ -186,4 +218,10 @@ function checkWin(){
 function gameEnd(){
     $('.buttons').children().hide();
     $('.reset-btn').show();
+}
+
+function flipCards(who,where,what){
+    //WHO: Player or Dealer | WHERE: Slots (1 thru 6) in Hand | WHAT: Card
+    const classSelector = `.${who}-cards .card-${where}`;
+    $(classSelector).html(`<img src="cards/${what}.png" />`);
 }
