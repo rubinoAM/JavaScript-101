@@ -2,6 +2,8 @@ const freshDeck = createDeck();
 let theDeck = freshDeck.slice();
 let playerHand = [];
 let dealerHand = [];
+let playerScore = 0;
+let dealerScore = 0;
 
 $(document).ready(function(){
     $('.hit-btn').prop('disabled',true);
@@ -146,18 +148,20 @@ function checkWin(){
     */
     let playerTotal= calcTotal(playerHand,'player');
     let dealerTotal= calcTotal(dealerHand,'dealer');
-    if(playerTotal > 21){
+    if(playerTotal > 21 || dealerHand == 21){
         alert("YOU LOSE!");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
         }
+        dealerScore += 1;
         gameEnd();
     }
-    else if(dealerTotal > 21){
+    else if(dealerTotal > 21 || playerHand == 21){
         alert("YOU WIN!");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
         }
+        playerScore += 1;
         gameEnd();
     }
     else if(playerHand.length == 2 && playerTotal == 21){
@@ -165,6 +169,7 @@ function checkWin(){
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
         }
+        playerScore += 1;
         gameEnd();
     }
     else if(dealerHand.length == 2 && dealerTotal == 21){
@@ -172,6 +177,7 @@ function checkWin(){
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
         }
+        dealerScore += 1;
         gameEnd();
     }
     else if(dealerTotal >= 17 && playerHand.length == 6){
@@ -181,12 +187,14 @@ function checkWin(){
                 for(let i = 0; i < dealerHand.length; i++){
                     flipCards('dealer',i+1,dealerHand[i]);
                 }
+                playerScore += 1;
                 gameEnd();
             } else {
                 alert("YOU LOSE!");
                 for(let i = 0; i < dealerHand.length; i++){
                     flipCards('dealer',i+1,dealerHand[i]);
                 }
+                dealerScore += 1;
                 gameEnd();
             }
         }
@@ -196,23 +204,30 @@ function checkWin(){
                 for(let i = 0; i < dealerHand.length; i++){
                     flipCards('dealer',i+1,dealerHand[i]);
                 }
+                dealerScore += 1;
                 gameEnd();
             } else {
                 alert("YOU WIN!");
                 for(let i = 0; i < dealerHand.length; i++){
                     flipCards('dealer',i+1,dealerHand[i]);
                 }
+                playerScore += 1;
                 gameEnd();
             }
         }
     }
-    else{
+    console.log(`Player Score: ${playerScore}`);
+    console.log(`Dealer Score: ${dealerScore}`);
+
+    //To Code: 1) Draw 2) What if the player scores over the dealer without breaking 21???
+
+    /*else{
         alert("DRAW!");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
         }
         gameEnd();
-    }
+    }*/
 }
 
 function gameEnd(){
