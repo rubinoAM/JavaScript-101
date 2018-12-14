@@ -4,6 +4,8 @@ let playerHand = [];
 let dealerHand = [];
 
 $(document).ready(function(){
+    $('.hit-btn').attr('disabled','disabled');
+    $('.stand-btn').attr('disabled','disabled');
     $('.reset-btn').hide();
 });
 
@@ -30,14 +32,7 @@ $('.deal-btn').click(()=>{
     calcTotal(playerHand,'player');
     calcTotal(dealerHand,'dealer');
 
-    /*for(let c = 0; c <= 6; c++){
-        let topCard = theDeck.shift() //.shift() pulls out the first element in the array and returns it
-        playerHand.push(topCard);
-        placeCard('player',(c+1),playerHand[c]);
-        topCard = theDeck.shift();
-        dealerHand.push(topCard);
-        placeCard('dealer',(c+1),dealerHand[c]);
-    }*/
+    $('.deal-btn').hide();
 })
 
 //Hit
