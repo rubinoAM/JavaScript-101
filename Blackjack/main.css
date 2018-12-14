@@ -9,8 +9,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 }
 
 .table{
-    background-color:rgb(26, 18, 99);
-    border:5px solid #6329ec;
+    background-color:#6afae7;
     border-radius: 0 0 70px 70px;
     padding:30px 0;
     margin:25px auto auto;
@@ -20,10 +19,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 .scores{
     margin:0 auto;
     text-align:center;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    background-color:#2d22c4;
-    color:white;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    background-color:#6afae7;
+    color:rgb(72, 70, 190);
     width:40%;
     height:60px;
     border-radius:10px;
@@ -31,6 +30,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 
 .scores h3{
     font-size:30px;
+    font-weight:400;
+    position:relative;
+    top:3px;
 }
 
 .scores span{
@@ -55,7 +57,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     width: 100px;
     height: 140px;
     padding: 10px;
-    background: rgb(45, 123, 196);
+    background: rgb(45, 166, 196);
     display:inline-block;
 }
 
@@ -65,7 +67,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     justify-self:center;
     width:100%;
     border-radius:7px;
-    box-shadow:3px 3px 3px rgb(46, 18, 18);}
+    box-shadow:3px 3px 3px rgb(18, 36, 46,0.3);}
 
 .buttons{
     margin-top:25px;
@@ -75,15 +77,16 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     border:none;
     padding:10px 20px;
     font-size:18px;
-    font-family:'Roboto';
+    font-family:'Ubuntu';
     margin:0 10px;
-    background-color:#2d22c4;
-    color:white;
+    background-color:#6afae7;
+    color:rgb(72, 70, 190);
     transition:all 0.75 ease-out;
 }
 
 .btn:hover{
     background-color:#3810a7;
+    color:white;
     transition:0.75 ease-out;
     border-radius:5px;
 }
@@ -124,6 +127,20 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 }
 
 @media screen and (max-width:575px){
+    .scores{
+        width:50%;
+    }
+
+    .scores h3{
+        top:6px;
+        font-size:26px;
+    }
+
+    .scores span{
+        font-size:16px;
+        bottom:10px;
+    }
+
     .card{
         width:9%;
         height:10vh;
@@ -131,6 +148,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 }
 
 @media screen and (max-width:450px){
+    .btn{
+        display:block;
+        margin:10px auto;
+    }
+
     .card{
         height:8vh;
     }
