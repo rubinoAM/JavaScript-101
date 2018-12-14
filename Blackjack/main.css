@@ -1,10 +1,46 @@
+body{
+    background-repeat: no-repeat;
+    background-size:cover;
+    background: rgb(22,55,159);
+background: -moz-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+background: -webkit-linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+background: linear-gradient(37deg, rgba(22,55,159,1) 0%, rgba(14,197,254,1) 45%, rgba(18,247,151,1) 100%) fixed;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endColorstr="#12f797",GradientType=1) fixed;
+}
+
 .table{
-    background-color:rgb(57, 110, 57);
-    border:5px solid #dcdcdc;
-    border-radius: 0 0 20px 20px;
+    background-color:rgb(26, 18, 99);
+    border:5px solid #6329ec;
+    border-radius: 0 0 70px 70px;
     padding:30px 0;
-    margin:50px auto auto;
+    margin:25px auto auto;
     max-width:800px;
+}
+
+.scores{
+    margin:0 auto;
+    text-align:center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    background-color:#2d22c4;
+    color:white;
+    width:40%;
+    height:60px;
+    border-radius:10px;
+}
+
+.scores h3{
+    font-size:30px;
+}
+
+.scores span{
+    font-size:18px;
+    position:relative;
+    bottom:15px;
+}
+
+.player-score{
+    margin-left:10px;
 }
 
 .row.player{
@@ -19,7 +55,7 @@
     width: 100px;
     height: 140px;
     padding: 10px;
-    background: rgb(126, 67, 67);
+    background: rgb(45, 123, 196);
     display:inline-block;
 }
 
@@ -35,4 +71,84 @@
     margin-top:25px;
 }
 
-.btn{}
+.btn{
+    border:none;
+    padding:10px 20px;
+    font-size:18px;
+    font-family:'Roboto';
+    margin:0 10px;
+    background-color:#2d22c4;
+    color:white;
+    transition:all 0.75 ease-out;
+}
+
+.btn:hover{
+    background-color:#3810a7;
+    transition:0.75 ease-out;
+    border-radius:5px;
+}
+
+@media screen and (max-width:800px){
+    .table{
+        width:80%;}
+
+    .card{
+        width:65px;
+        height:90px;
+    }
+
+    .card img{
+        border-radius:4px;
+    }
+
+    .row{
+        margin-top:10px;
+    }
+
+    .player-cards{
+        position:relative;
+        bottom:10px;
+    }
+}
+
+@media screen and (max-width:700px){
+    .card{
+        width:11%;
+        height:12vh;
+    }
+
+    .card img{
+        border-radius:0;
+        height:100%;
+    }
+}
+
+@media screen and (max-width:575px){
+    .card{
+        width:9%;
+        height:10vh;
+    }
+}
+
+@media screen and (max-width:450px){
+    .card{
+        height:8vh;
+    }
+}
+/*@media screen and (max-width:575px){
+    .card{
+        width:30px;
+        height:50px;
+    }
+
+    .card img{
+        border-radius:2px;
+    }
+}
+
+@media screen and (max-width:450px){
+    .card{
+        width:25px;
+        height:35px;
+    }
+}
