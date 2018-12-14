@@ -33,6 +33,8 @@ $('.deal-btn').click(()=>{
     calcTotal(dealerHand,'dealer');
 
     $('.deal-btn').hide();
+    $('.hit-btn').attr('disabled',false);
+    $('.stand-btn').attr('disabled',false);
 })
 
 //Hit

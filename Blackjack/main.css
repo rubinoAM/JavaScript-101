@@ -12,8 +12,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
     background-color:#6afae7;
     border-radius: 0 0 70px 70px;
     padding:30px 0;
-    margin:25px auto auto;
+    margin:0 auto;
+    position:relative;
+    bottom:25px;
     max-width:800px;
+    transform: perspective(500px) rotateX(25deg); /*Increasing perspective() and decreasing rotateX() makes the perspective closer to normal*/
 }
 
 .scores{
@@ -115,6 +118,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 }
 
 @media screen and (max-width:700px){
+    .table{
+        bottom:18px;
+    }
+
     .card{
         width:11%;
         height:12vh;
@@ -127,6 +134,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 }
 
 @media screen and (max-width:575px){
+    .table{
+        bottom:10px;
+    }
+
     .scores{
         width:50%;
     }
@@ -155,22 +166,5 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#16379f",endCo
 
     .card{
         height:8vh;
-    }
-}
-/*@media screen and (max-width:575px){
-    .card{
-        width:30px;
-        height:50px;
-    }
-
-    .card img{
-        border-radius:2px;
-    }
-}
-
-@media screen and (max-width:450px){
-    .card{
-        width:25px;
-        height:35px;
     }
 }
