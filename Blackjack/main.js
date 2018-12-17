@@ -2,7 +2,9 @@ const freshDeck = createDeck();
 let theDeck = freshDeck.slice();
 let playerHand = [];
 let dealerHand = [];
+
 let dealerDone = false;
+
 let playerScore = 0;
 let dealerScore = 0;
 
@@ -56,8 +58,8 @@ $('.hit-btn').click(()=>{
 //Stand
 $('.stand-btn').click(()=>{
     /*Rules for Dealer
-    1. If the player has less than 17, they must hit
-    2. If the player has 17 or more, they can't hit
+    1. If the dealer has less than 17, they must hit
+    2. If the dealer has 17 or more, they can't hit
     */
    let dealerTotal = calcTotal(dealerHand,'dealer');
    if (dealerTotal < 17){
@@ -65,8 +67,6 @@ $('.stand-btn').click(()=>{
        dealerHand.push(topCard);
        placeCard('dealer',dealerHand.length,topCard);
        dealerTotal = calcTotal(dealerHand,'dealer');
-   } else {
-       dealerDone = true;
    }
    checkWin();
    checkDraw();
@@ -154,7 +154,7 @@ function shuffleDeck(deck){
 }
 
 function checkDraw(){
-    if(playerScore == 20 & dealerScore == 20){
+    if(playerScore == 20 && dealerScore == 20){
         alert("DRAW");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
@@ -245,16 +245,6 @@ function checkWin(){
     }
     console.log(`Player Score: ${playerScore}`);
     console.log(`Dealer Score: ${dealerScore}`);
-
-    //To Code: 1) Draw 2) What if the player scores over the dealer without breaking 21???
-
-    /*else{
-        alert("DRAW!");
-        for(let i = 0; i < dealerHand.length; i++){
-            flipCards('dealer',i+1,dealerHand[i]);
-        }
-        gameEnd();
-    }*/
 }
 
 function gameEnd(){
