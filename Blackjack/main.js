@@ -38,6 +38,9 @@ $('.deal-btn').click(()=>{
     $('.deal-btn').hide();
     $('.hit-btn').prop('disabled',false);
     $('.stand-btn').prop('disabled',false);
+
+    checkWin();
+    checkDraw();
 })
 
 //Hit
@@ -88,13 +91,22 @@ $('.reset-btn').click(()=>{
 function calcTotal(hand,who){
     //Find out the total and put it in the DOM
     let handTotal = 0;
+    let numAces = 0;
     hand.forEach((card,i)=>{
         let cardValue = Number(card.slice(0,-1));
         if(cardValue >= 10){
             cardValue = 10;
+        } else if (cardValue == 1){
+            numAces += 1;
+            cardValue = 11;
         }
         handTotal += cardValue;
     });
+    if(handTotal > 21){
+        for(let i=0; i < numAces; i++){
+            handTotal -= 10;
+        }
+    }
     $(`.${who}-total`).html(handTotal);
     return handTotal;
 }
