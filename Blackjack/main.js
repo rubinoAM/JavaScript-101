@@ -3,6 +3,7 @@ let theDeck = freshDeck.slice();
 let playerHand = [];
 let dealerHand = [];
 
+let playerDone = false;
 let dealerDone = false;
 
 let playerScore = 0;
@@ -41,7 +42,7 @@ $('.deal-btn').click(()=>{
     $('.hit-btn').prop('disabled',false);
     $('.stand-btn').prop('disabled',false);
 
-    checkWin();
+    checkWin("blackjack");
     checkDraw();
 })
 
@@ -62,7 +63,7 @@ $('.stand-btn').click(()=>{
     2. If the dealer has 17 or more, they can't hit
     */
    let dealerTotal = calcTotal(dealerHand,'dealer');
-   if (dealerTotal < 17){
+   while (dealerTotal < 17){
        const topCard = theDeck.shift();
        dealerHand.push(topCard);
        placeCard('dealer',dealerHand.length,topCard);
@@ -84,6 +85,8 @@ $('.reset-btn').click(()=>{
     dealerHand = [];
 
     $('.buttons').children().show();
+    $('.hit-btn').prop('disabled',true);
+    $('.stand-btn').prop('disabled',true);
     $('.reset-btn').hide();
 });
 
@@ -154,7 +157,9 @@ function shuffleDeck(deck){
 }
 
 function checkDraw(){
-    if(playerScore == 20 && dealerScore == 20){
+    let playerTotal= calcTotal(playerHand,'player');
+    let dealerTotal= calcTotal(dealerHand,'dealer');
+    if(playerTotal >= 17 && dealerTotal >= 17 && playerTotal == dealerTotal){
         alert("DRAW");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
@@ -163,7 +168,7 @@ function checkDraw(){
     }
 }
 
-function checkWin(){
+function checkWin(useCase){
     /*
         1. If the player has > 21, you lose
         2. If the dealer has > 21, they lose
@@ -175,6 +180,27 @@ function checkWin(){
     */
     let playerTotal= calcTotal(playerHand,'player');
     let dealerTotal= calcTotal(dealerHand,'dealer');
+
+    if(useCase == "blackjack"){
+        if(playerHand.length == 2 && playerTotal == 21){
+            alert("BLACKJACK! YOU WIN!!");
+            for(let i = 0; i < dealerHand.length; i++){
+                flipCards('dealer',i+1,dealerHand[i]);
+            }
+            playerScore += 1;
+            gameEnd();
+        }
+        else if(dealerHand.length == 2 && dealerTotal == 21){
+            alert("BLACKJACK! YOU LOSE!!");
+            for(let i = 0; i < dealerHand.length; i++){
+                flipCards('dealer',i+1,dealerHand[i]);
+            }
+            dealerScore += 1;
+            gameEnd();
+        }
+        return;
+    }
+
     if(playerTotal > 21 || dealerTotal == 21){
         alert("YOU LOSE!");
         for(let i = 0; i < dealerHand.length; i++){
@@ -191,22 +217,24 @@ function checkWin(){
         playerScore += 1;
         gameEnd();
     }
-    else if(playerHand.length == 2 && playerTotal == 21){
-        alert("BLACKJACK! YOU WIN!!");
-        for(let i = 0; i < dealerHand.length; i++){
-            flipCards('dealer',i+1,dealerHand[i]);
+    else if(dealerTotal >= 17 && playerHand.length >= 2 && playerHand.length <= 5){
+        if(playerTotal > dealerTotal){
+            alert("YOU WIN!");
+            for(let i = 0; i < dealerHand.length; i++){
+                flipCards('dealer',i+1,dealerHand[i]);
+            }
+            playerScore += 1;
+            gameEnd();
         }
-        playerScore += 1;
-        gameEnd();
-    }
-    else if(dealerHand.length == 2 && dealerTotal == 21){
-        alert("BLACKJACK! YOU LOSE!!");
-        for(let i = 0; i < dealerHand.length; i++){
-            flipCards('dealer',i+1,dealerHand[i]);
+        else{
+            alert("YOU LOSE!");
+            for(let i = 0; i < dealerHand.length; i++){
+                flipCards('dealer',i+1,dealerHand[i]);
+            }
+            dealerScore += 1;
+            gameEnd();
         }
-        dealerScore += 1;
-        gameEnd();
-    }
+    }    
     else if(dealerTotal >= 17 && playerHand.length == 6){
         if(playerTotal > dealerTotal){
             if(playerTotal < 21){

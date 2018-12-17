@@ -1,0 +1,47 @@
+img{
+	max-width: 100%;
+}
+
+.playcard{
+	perspective: 800px;
+	border: 2px solid black;
+	height: 300px;
+}
+
+.playcard-holder{
+	position: relative;
+    transform-style: preserve-3d;
+    transition: 0.5s all ease-out;
+	cursor: pointer;
+}
+
+.playcard-front, .playcard-back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+}
+
+.playcard-front{
+	transform: rotateY(180deg);
+}
+
+.playcard-back{
+	background: url('img/logo-bw.png') no-repeat 50% 50%;	
+	height: 300px;
+    width: 100%;
+    transition:0.2s ease-in-out;
+}
+
+.playcard-back:hover{
+    transform: scale(1.25,1.25) rotateZ(15deg);
+}
+
+.flip{
+	transform: rotateY(-180deg);
+}
+
+.match{
+    transform: rotateY(540deg);
+    transition: all 1s ease-out;
+}
