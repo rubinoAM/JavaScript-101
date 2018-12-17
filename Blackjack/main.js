@@ -148,7 +148,7 @@ function checkWin(){
     */
     let playerTotal= calcTotal(playerHand,'player');
     let dealerTotal= calcTotal(dealerHand,'dealer');
-    if(playerTotal > 21 || dealerHand == 21){
+    if(playerTotal > 21 || dealerTotal == 21){
         alert("YOU LOSE!");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
@@ -156,7 +156,7 @@ function checkWin(){
         dealerScore += 1;
         gameEnd();
     }
-    else if(dealerTotal > 21 || playerHand == 21){
+    else if(dealerTotal > 21 || playerTotal == 21){
         alert("YOU WIN!");
         for(let i = 0; i < dealerHand.length; i++){
             flipCards('dealer',i+1,dealerHand[i]);
