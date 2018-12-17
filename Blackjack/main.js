@@ -55,7 +55,7 @@ $('.stand-btn').click(()=>{
     2. If the player has 17 or more, they can't hit
     */
    let dealerTotal = calcTotal(dealerHand,'dealer');
-   while (dealerTotal < 17){
+   if (dealerTotal < 17){
        const topCard = theDeck.shift();
        dealerHand.push(topCard);
        placeCard('dealer',dealerHand.length,topCard);
