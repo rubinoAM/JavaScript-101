@@ -2,6 +2,7 @@ const freshDeck = createDeck();
 let theDeck = freshDeck.slice();
 let playerHand = [];
 let dealerHand = [];
+let dealerDone = false;
 let playerScore = 0;
 let dealerScore = 0;
 
@@ -46,6 +47,7 @@ $('.hit-btn').click(()=>{
     placeCard('player',playerHand.length,topCard);
     calcTotal(playerHand,'player');
     checkWin();
+    checkDraw();
 });
 
 //Stand
@@ -60,8 +62,11 @@ $('.stand-btn').click(()=>{
        dealerHand.push(topCard);
        placeCard('dealer',dealerHand.length,topCard);
        dealerTotal = calcTotal(dealerHand,'dealer');
+   } else {
+       dealerDone = true;
    }
    checkWin();
+   checkDraw();
 });
 
 $('.reset-btn').click(()=>{
@@ -124,7 +129,7 @@ function createDeck(){
 
 function shuffleDeck(deck){
     //When the loop is done, the array will be shuffled
-    for(let i = 0; i < 1000; i++){
+    for(let i = 0; i < 100000; i++){
         let rand1 = Math.floor(Math.random()*52);
         let rand2 = Math.floor(Math.random()*52);
 
@@ -133,6 +138,16 @@ function shuffleDeck(deck){
         let safeCard = deck[rand1];
         deck[rand1] = deck[rand2];
         deck[rand2] = safeCard;
+    }
+}
+
+function checkDraw(){
+    if(playerScore == 20 & dealerScore == 20){
+        alert("DRAW");
+        for(let i = 0; i < dealerHand.length; i++){
+            flipCards('dealer',i+1,dealerHand[i]);
+        }
+        gameEnd();
     }
 }
 
