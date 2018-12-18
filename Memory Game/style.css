@@ -1,11 +1,60 @@
+body{
+    background-image: url('https://cdn.pixabay.com/photo/2016/07/30/20/52/vintage-1557993_960_720.jpg');
+    background-size: cover;
+}
+
+.board{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    position:relative;
+}
+
+.diff-settings{
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.diff-settings h1{
+    color:white;
+    font-size:50px;
+    font-family:'Staatliches','Helvetica',sans-serif;
+    font-weight:bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 5px black;
+}
+
+.diff-settings .btn{
+    border:none;
+    color:white;
+    background:rgba(22, 22, 22, 0.75);
+    width:150px;
+    height:55px;
+    font-family:"Roboto Condensed","Helvetica",sans-serif;
+    font-size:20px;
+    text-transform: uppercase;
+    transition:all 0.5s;
+    transition-timing-function: cubic-bezier(.59,-0.41,.59,1.28);
+}
+
+.diff-settings .btn:hover{
+    border-top-left-radius: 40px;
+    background:rgba(139, 17, 17, 0.875);
+}
+
 img{
 	max-width: 100%;
 }
 
 .playcard{
 	perspective: 800px;
-	border: 2px solid black;
-	height: 200px;
+    height: 200px; width:200px;
+    margin:0 5px;
+    box-shadow:2px 2px 7px black;
 }
 
 .playcard-holder{
@@ -19,7 +68,7 @@ img{
 	position: absolute;
 	top: 0;
 	left: 0;
-	backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .playcard-front{
@@ -27,14 +76,15 @@ img{
 }
 
 .playcard-back{
-	background: url('cards/cardback.png') no-repeat 50% 50%;	
-	height: 200px;
-    width: 100%;
+    background: url('cards/cardback.png') no-repeat;
+    background-size:cover;	
+    height: 200px;
+    width: 200px;
     transition:0.2s ease-in-out;
 }
 
 .playcard-back:hover{
-    transform: scale(1.25,1.25) rotateZ(15deg);
+    filter: grayscale(1);
 }
 
 .flip{
@@ -44,4 +94,29 @@ img{
 .match{
     transform: rotateY(540deg);
     transition: all 1s ease-out;
+}
+
+@media screen and (max-width:500px){
+    .diff-settings h1{
+        display:flex;
+        align-items:center;
+        flex-direction: column;
+        font-size:60px;
+    }
+
+    .diff-settings .btns{
+        margin-top:50px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .diff-settings .btn{
+        font-size:25pt;
+        height:65px;
+        width:100vw;
+    }
+    
+    .diff-settings .btn:hover{
+        border-top-left-radius: 0;
+    }
 }

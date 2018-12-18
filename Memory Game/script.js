@@ -10,11 +10,11 @@ $(document).ready(()=>{
             cards.push(`<img src="./cards/card${cardNumber}.jpg" />`);
         }
         cards = shuffleDeck(cards);
-        
-        let memoryHTML = "";
+
+        let memoryHTML = "<div class='board'>";
         cards.forEach((card)=>{
             memoryHTML += `
-                <div class="playcard col-sm-3">
+                <div class="playcard">
                     <div class="playcard-holder">
                         <div class="playcard-front">${card}</div>
                         <div class="playcard-back"></div>
@@ -22,7 +22,19 @@ $(document).ready(()=>{
                 </div>
             `
         })
+        memoryHTML += `</div>`;
         $('.mg').html(memoryHTML);
+        if(gridSize == 4){
+            $('.board').css("top","35vh");
+        }
+        else if(gridSize == 12){
+            $('.board').css("top","23vh");
+        }
+        else if(gridSize == 28){
+            $('.board').css({"top":"11vh","margin":"0 auto","width":"80%"});
+            $('.playcard').css({"width":"125px","height":"125px","margin":"0 5px 5px"});
+            $('.playcard-back').css({"width":"125px","height":"125px"});
+        }
         $('.playcard-holder').click(function(){
             $(this).addClass('flip');
             let cardsUp = $('.flip');

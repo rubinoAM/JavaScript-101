@@ -5,17 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Memory Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Staatliches" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center mg">
-                <h1>How difficult?</h1>
-                <button diff=4 class="btn btn-lg btn-success">Easy</button>
-                <button diff=12 class="btn btn-lg btn-warning">Medium</button>
-                <button diff=28 class="btn btn-lg btn-danger">Hard</button>
+            <div class="mg">
+                <div class="diff-settings">
+                    <h1>
+                        <span>Choose</span> <span>Your</span> <span>Difficulty</span>
+                    </h1>
+                    <div class="btns">
+                        <button diff=4 class="btn">Easy</button>
+                        <button diff=12 class="btn">Medium</button>
+                        <button diff=28 class="btn">Hard</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
