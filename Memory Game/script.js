@@ -5,12 +5,9 @@ $(document).ready(()=>{
         let gridSize = $(this).attr('diff');
         let cards = [];
         for(let i=1;i<=gridSize/2;i++){ //Our monsters start at 1 in their filenames
-            let monsterNumber = i;
-            if(i<10){
-                monsterNumber = "0"+i;
-            }
-            cards.push(`<img src="./img/monsters-${monsterNumber}.png" />`); //Push two of each since it's a matching game
-            cards.push(`<img src="./img/monsters-${monsterNumber}.png" />`);
+            let cardNumber = i;
+            cards.push(`<img src="./cards/card${cardNumber}.jpg" />`); //Push two of each since it's a matching game
+            cards.push(`<img src="./cards/card${cardNumber}.jpg" />`);
         }
         cards = shuffleDeck(cards);
         

@@ -5,7 +5,7 @@ img{
 .playcard{
 	perspective: 800px;
 	border: 2px solid black;
-	height: 300px;
+	height: 200px;
 }
 
 .playcard-holder{
@@ -27,8 +27,8 @@ img{
 }
 
 .playcard-back{
-	background: url('img/logo-bw.png') no-repeat 50% 50%;	
-	height: 300px;
+	background: url('cards/cardback.png') no-repeat 50% 50%;	
+	height: 200px;
     width: 100%;
     transition:0.2s ease-in-out;
 }
