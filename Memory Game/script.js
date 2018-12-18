@@ -45,8 +45,6 @@ $(document).ready(()=>{
                 }
             }
             checkWin(numGuesses,numMatches,gridSize);
-            console.log(numGuesses);
-            console.log(numMatches);
         });
     })
 })
@@ -66,25 +64,31 @@ function checkWin(guesses,matches,size){
     if (size == 4){
         if (guesses > 8){
             alert("You Lose!");
+            $('.playcard-holder').unbind('click');
         }
         else if (matches == 2){
             alert("You Win!");
+            $('.playcard-holder').unbind('click');
         }
     }
     else if (size == 12){
         if (guesses > 24){
             alert("You Lose!");
+            $('.playcard-holder').unbind('click');
         }
         else if (matches == 6){
             alert("You Win!");
+            $('.playcard-holder').unbind('click');
         }
     }
     else if (size == 28){
         if (guesses > 56){
             alert("You Lose!");
+            $('.playcard-holder').unbind('click');
         }
         else if (matches == 14){
             alert("You Win!");
+            $('.playcard-holder').unbind('click');
         }
     }
 }
