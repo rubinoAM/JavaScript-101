@@ -61,32 +61,81 @@ function shuffleDeck(d){
 function checkWin(guesses,matches,size){
     if (size == 4){
         if (guesses > 8){
-            swal("Failure", "Sorry. You Lost!", "error");
+            swal("Failure", "Sorry. You Lost!", "error", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
         else if (matches == 2){
-            swal("Victory", "Congratulations. You Won!", "success");
+            swal("Victory", "Congratulations. You Won!", "success", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
     }
     else if (size == 12){
         if (guesses > 24){
-            swal("Failure", "Sorry. You Lost!", "error");
+            swal("Failure", "Sorry. You Lost!", "error", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
         else if (matches == 6){
-            swal("Victory", "Congratulations. You Won!", "success");
+            swal("Victory", "Congratulations. You Won!", "success", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
     }
     else if (size == 28){
         if (guesses > 56){
-            swal("Failure", "Sorry. You Lost!", "error");
+            swal("Failure", "Sorry. You Lost!", "error", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
         else if (matches == 14){
-            swal("Victory", "Congratulations. You Won!", "success");
+            swal("Victory", "Congratulations. You Won!", "success", {button: "Reset"}).then(
+                () => {
+                    //resetGame(size);
+                }
+            );
             $('.playcard-holder').unbind('click');
         }
     }
 }
+
+/*function resetGame(grid){
+    $('.mg').html('');
+    let cards = [];
+    for(let i=1;i<=grid/2;i++){ //Our monsters start at 1 in their filenames
+        let cardNumber = i;
+        cards.push(`<img src="./cards/card${cardNumber}.jpg" />`); //Push two of each since it's a matching game
+        cards.push(`<img src="./cards/card${cardNumber}.jpg" />`);
+    }
+    cards = shuffleDeck(cards);
+
+    let memoryHTML = `<div class='board-${grid}'>`;
+    cards.forEach((card)=>{
+        memoryHTML += `
+            <div class="playcard-${grid}">
+                <div class="playcard-holder">
+                    <div class="playcard-front">${card}</div>
+                    <div class="playcard-back"></div>
+                </div>
+            </div>
+        `
+    })
+    memoryHTML += `</div>`;
+    $('.mg').html(memoryHTML);
+}*/

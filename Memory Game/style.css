@@ -13,6 +13,10 @@ body{
 	font-family:"Roboto Condensed","Helvetica",sans-serif;
 }
 
+.swal-footer{
+	text-align:center;
+}
+
 .board-4, .board-12, .board-28{
     display:flex;
     flex-wrap:wrap;
