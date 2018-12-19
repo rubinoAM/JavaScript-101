@@ -1,13 +1,29 @@
+html{width:100%;}
+
 body{
     background-image: url('https://cdn.pixabay.com/photo/2016/07/30/20/52/vintage-1557993_960_720.jpg');
     background-size: cover;
 }
 
-.board{
+.board-4, .board-12, .board-28{
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
     position:relative;
+}
+
+.board-4{
+	top:35vh;
+}
+
+.board-12{
+	top:23vh;
+}
+
+.board-28{
+	top:13vh;
+	margin:0 auto;
+	width:80%;
 }
 
 .diff-settings{
@@ -50,11 +66,24 @@ img{
 	max-width: 100%;
 }
 
-.playcard{
+.playcard-4, .playcard-12, .playcard-28{
 	perspective: 800px;
+}
+
+.playcard-4, .playcard-12{
     height: 200px; width:200px;
+}
+
+.playcard-4{
     margin:0 5px;
-    box-shadow:2px 2px 7px black;
+}
+
+.playcard-12, .playcard-28{
+	margin: 0 5px 10px;
+}
+
+.playcard-28, .playcard-28 .playcard-front, .playcard-28 .playcard-back{
+	width:125px; height:125px;
 }
 
 .playcard-holder{
@@ -65,10 +94,12 @@ img{
 }
 
 .playcard-front, .playcard-back{
+    height: 200px; width:200px;
 	position: absolute;
 	top: 0;
 	left: 0;
     backface-visibility: hidden;
+    box-shadow:2px 2px 7px black;
 }
 
 .playcard-front{
@@ -96,6 +127,100 @@ img{
     transition: all 1s ease-out;
 }
 
+@media screen and (max-width:1260px){
+	.board-12{
+		top:30vh;
+	}
+	
+	.playcard-12, .playcard-12 .playcard-front, .playcard-12 .playcard-back{
+		height:170px; width: 170px;
+	}
+}
+
+@media screen and (max-width:1180px){
+	.board-28{
+		width:85%;
+	}
+}
+
+@media screen and (max-width:1115px){
+	.board-28{
+		top:3vh;
+	}
+}
+
+@media screen and (max-width:1080px){
+	.board-12{
+		top:15vh;
+	}
+}
+
+@media screen and (max-width:970px){
+	.board-28{
+		top:20vh;
+		width:95%;
+	}
+	.playcard-28, .playcard-28 .playcard-front, .playcard-28 .playcard-back{
+		height:100px; width:100px;
+	}
+}
+
+@media screen and (max-width:840px){
+	.playcard-4, .playcard-4 .playcard-front, .playcard-4 .playcard-back{
+		height:170px; width:170px;
+	}
+}
+
+@media screen and (max-width:810px){
+	.board-28{
+		top:12vh;
+	}
+}
+
+@media screen and (max-width:750px){
+	.board-12{
+		top:20vh;
+	}
+	.playcard-12, .playcard-12 .playcard-front, .playcard-12 .playcard-back{
+		height:150px; width: 150px;
+	}
+}
+
+@media screen and (max-width:695px){
+	.board-28{
+		top:5vh;
+	}
+}
+
+@media screen and (max-width:660px){
+	.board-12{
+		top:25vh;
+	}
+	.playcard-12, .playcard-12 .playcard-front, .playcard-12 .playcard-back{
+		height:120px; width: 120px;
+	}
+}
+
+@media screen and (max-width:580px){
+	.board-28{
+		top:8vh;
+	}
+
+	.playcard-28{
+		margin:2px;
+	}
+
+	.playcard-28, .playcard-28 .playcard-front, .playcard-28 .playcard-back{
+		height:90px; width: 90px;
+	}
+}
+
+@media screen and (max-width:520px){
+	.board-12{
+		top:15vh;
+	}
+}
+
 @media screen and (max-width:500px){
     .diff-settings h1{
         display:flex;
@@ -118,5 +243,25 @@ img{
     
     .diff-settings .btn:hover{
         border-top-left-radius: 0;
-    }
+	}
+	
+	.board-4{
+		top:25vh;
+	}
+
+	.board-4, .board-12, .board-28{
+		width:100%;
+	}
+
+	.playcard-4{
+		margin:5px;
+	}
+
+	.playcard-4, .playcard-4 .playcard-front, .playcard-4 .playcard-back{
+		height:150px; width:150px;
+	}
+
+	.playcard-28, .playcard-28 .playcard-front, .playcard-28 .playcard-back{
+		height:80px; width: 80px;
+	}
 }
