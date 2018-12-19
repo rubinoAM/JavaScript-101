@@ -5,6 +5,14 @@ body{
     background-size: cover;
 }
 
+.swal-title{
+    font-family:'Staatliches','Helvetica',sans-serif;
+}
+
+.swal-text{
+	font-family:"Roboto Condensed","Helvetica",sans-serif;
+}
+
 .board-4, .board-12, .board-28{
     display:flex;
     flex-wrap:wrap;
